@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="row">
+    <div class="col-md-2" ng-controller="LeftPanel">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <li ng-class="{active: isActive('customer')}"><a href="/#/customer/list">Customers</a></li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <li ng-class="{active: isActive('order')}"><a href="/#/orders">Orders</a></li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <div class="panel-body" ng-view></div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+

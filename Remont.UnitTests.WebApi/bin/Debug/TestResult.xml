@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\work\Remont\Remont.UnitTests.WebApi\bin\Debug\Remont.UnitTests.WebApi.dll" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-11-09" time="09:51:20">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\work\Remont\Remont.UnitTests.WebApi\bin\Debug" machine-name="ADMIN-PC" user="Admin" user-domain="Admin-PC" />
+  <culture-info current-culture="ru-RU" current-uiculture="ru-RU" />
+  <test-suite type="Assembly" name="C:\work\Remont\Remont.UnitTests.WebApi\bin\Debug\Remont.UnitTests.WebApi.dll" executed="True" result="Success" success="True" time="0.032" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="Remont" executed="True" result="Success" success="True" time="0.032" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="UnitTests" executed="True" result="Success" success="True" time="0.031" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="WebApi" executed="True" result="Success" success="True" time="0.031" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="CustomerTests" executed="True" result="Success" success="True" time="0.030" asserts="0">
+                    <results>
+                      <test-case name="Remont.UnitTests.WebApi.CustomerTests.Should_create" executed="True" result="Success" success="True" time="0.006" asserts="0" />
+                      <test-case name="Remont.UnitTests.WebApi.CustomerTests.Should_delete" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                      <test-case name="Remont.UnitTests.WebApi.CustomerTests.Should_get" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                      <test-case name="Remont.UnitTests.WebApi.CustomerTests.Should_update" executed="True" result="Success" success="True" time="0.007" asserts="0" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
