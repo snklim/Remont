@@ -12,7 +12,7 @@ angular.module('remontApp').controller('CustomerEditCtrl', function ($scope, $lo
     };
 
     $scope.cancel = function () {
-        $location.path('customers');
+        $location.path('customer/list/');
     };
 
 });

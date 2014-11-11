@@ -1,0 +1,17 @@
+﻿<form role="form" ng-submit="save()">
+    <div class="form-group">
+        <label>Order Date</label>
+        <div>
+            <p class="form-control-static">{{ order.OrderDate | date : short }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Order Status</label>
+        <select class="form-control"
+                ng-options="os.Id as os.StatusName for os in orderStatuses"
+                ng-model="order.OrderStatusId">
+        </select>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    <button ng-click="cancel()" class="btn btn-default">Cancel</button>
+</form>

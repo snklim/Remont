@@ -14,6 +14,8 @@ namespace Remont.DAL
 
         public virtual DbSet<Order> Orders { get; set; }
 
+        public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().ToTable("Customer");

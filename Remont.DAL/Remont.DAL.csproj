@@ -60,6 +60,14 @@
     <Compile Include="Migrations\201411091219440_Order-OrderStatus.Designer.cs">
       <DependentUpon>201411091219440_Order-OrderStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411111858114_OrderStatus.cs" />
+    <Compile Include="Migrations\201411111858114_OrderStatus.Designer.cs">
+      <DependentUpon>201411111858114_OrderStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411111924013_OrderStatusId.cs" />
+    <Compile Include="Migrations\201411111924013_OrderStatusId.Designer.cs">
+      <DependentUpon>201411111924013_OrderStatusId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemontContext.cs" />
@@ -87,6 +95,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411091219440_Order-OrderStatus.resx">
       <DependentUpon>201411091219440_Order-OrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411111858114_OrderStatus.resx">
+      <DependentUpon>201411111858114_OrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411111924013_OrderStatusId.resx">
+      <DependentUpon>201411111924013_OrderStatusId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

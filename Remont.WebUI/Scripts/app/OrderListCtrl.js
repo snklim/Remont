@@ -1,20 +1,20 @@
 ﻿
-angular.module('remontApp').controller('CustomerListCtrl', function ($scope, $location, response, dataFeeder, pageService) {
+angular.module('remontApp').controller('OrderListCtrl', function ($scope, $location, response, dataFeeder, pageService) {
 
     $scope.pageInfo = response.PageInfoRequest;
 
     $scope.customers = response.Items;
 
-    var feeder = dataFeeder.create('/api/customer');
+    var feeder = dataFeeder.create('/api/order');
 
     $scope.pages = pageService.getPages($scope.pageInfo.PageIndex, $scope.pageInfo.TotalPages);
 
     $scope.edit = function (id) {
 
         if (id > 0) {
-            $location.path('customer/edit/' + id);
+            $location.path('order/edit/' + id);
         } else {
-            $location.path('customer/create');
+            $location.path('order/create');
         }
 
     };

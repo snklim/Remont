@@ -15,6 +15,21 @@ namespace Remont.DAL.Migrations
 
         protected override void Seed(Remont.DAL.RemontContext context)
         {
+            context.OrderStatuses.Add(new Common.Model.OrderStatus
+            {
+                StatusName = "New"
+            });
+
+            context.OrderStatuses.Add(new Common.Model.OrderStatus
+            {
+                StatusName = "In Progress"
+            });
+
+            context.OrderStatuses.Add(new Common.Model.OrderStatus
+            {
+                StatusName = "Completed"
+            });
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

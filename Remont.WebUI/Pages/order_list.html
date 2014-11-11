@@ -1,0 +1,35 @@
+﻿<div class="panel panel-default">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Order Date</th>
+                <th>Order Status</th>
+                <th>
+                    <div style="float: right">
+                        <a ng-click="edit(0)" class="glyphicon glyphicon-plus"></a>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="c in customers">
+            <tr>
+                <td>{{ c.Id }}</td>
+                <td>{{ c.OrderDate | date : short }}</td>
+                <td>{{ c.OrderStatus.StatusName }}</td>
+                <td>
+                    <div style="float: right">
+                        <a ng-click="edit(c.Id)" class="glyphicon glyphicon-pencil"></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<nav ng-click="pageChange()">
+    <ul class="pagination">
+        <li ng-repeat="p in pages" ng-class="{active: pageInfo.PageIndex == p.pageIndex}">
+            <a data-pageindex="{{ p.pageIndex }}" href="#">{{ p.pageText }}</a>
+        </li>
+    </ul>
+</nav>

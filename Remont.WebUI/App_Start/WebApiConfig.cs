@@ -20,6 +20,8 @@ namespace Remont.WebUI
                 new HierarchicalLifetimeManager());
             container.RegisterType<IRepository<Order, int>, EntityRepository<Order, int>>(
                 new HierarchicalLifetimeManager());
+            container.RegisterType<IRepository<OrderStatus, int>, EntityRepository<OrderStatus, int>>(
+                new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes

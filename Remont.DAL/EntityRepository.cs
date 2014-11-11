@@ -32,7 +32,7 @@ namespace Remont.DAL
 
         public IList<TItem> Get(int pageIndex, out int totalItems, out int totalPages, out int pageIndexOut)
         {
-            const int pageSize = 2;
+            const int pageSize = 5;
 
             totalItems = _db.Set<TItem>().Count();
             totalPages = totalItems/pageSize + (totalItems%pageSize == 0 ? 0 : 1);
