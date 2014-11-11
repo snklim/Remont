@@ -3,7 +3,7 @@ angular.module('remontApp').controller('CustomerListCtrl', function ($scope, $ht
 
     console.log(response);
 
-    $scope.prevPageIndex = 0;
+    $scope.pageInfo = response.PageInfoRequest;
 
     $scope.customers = response.Items;
 
@@ -53,9 +53,9 @@ angular.module('remontApp').controller('CustomerListCtrl', function ($scope, $ht
         var pageIndex = $(event.target).attr('data-pageindex');
 
         if (pageIndex == 'prev') {
-            pageIndex = $scope.prevPageIndex - 1;
+            pageIndex = $scope.pageInfo.PageIndex - 1;
         } else if (pageIndex == 'next') {
-            pageIndex = $scope.prevPageIndex + 1;
+            pageIndex = $scope.pageInfo.PageIndex + 1;
         }
 
         $http.get('/api/customer/', {
@@ -64,11 +64,11 @@ angular.module('remontApp').controller('CustomerListCtrl', function ($scope, $ht
                 pageIndex: pageIndex
             }
 
-        }).success(function (data) {
+        }).success(function (response) {
 
-            $scope.customers = data.Items;
+            $scope.customers = response.Items;
 
-            $scope.prevPageIndex = data.Request.PageIndex;
+            $scope.pageInfo = response.PageInfoRequest;
 
         });
 

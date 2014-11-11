@@ -60,7 +60,7 @@ var remontApp = angular.module('remontApp', ['ngRoute']).config(function ($route
             'response': function (response) {
 
                 $timeout(function() {
-                    $('#ajaxIndicator').hide(100);
+                    $('#ajaxIndicator').fadeOut(100);
                 }, 100);
                 
                 return response;

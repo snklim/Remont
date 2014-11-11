@@ -30,15 +30,26 @@ namespace Remont.DAL
             }
         }
 
-        public IList<TItem> Get(int pageIndex, out int totalItems)
+        public IList<TItem> Get(int pageIndex, out int totalItems, out int totalPages, out int pageIndexOut)
         {
-            const int pageSize = 5;
+            const int pageSize = 2;
 
             totalItems = _db.Set<TItem>().Count();
+            totalPages = totalItems/pageSize + (totalItems%pageSize == 0 ? 0 : 1);
+            pageIndexOut = pageIndex;
 
+            if (pageIndex < 0)
+            {
+                pageIndexOut = 0;
+            }
+            else if (pageIndex >= totalPages)
+            {
+                pageIndexOut = totalPages - 1;
+            }
+            
             return _db.Set<TItem>()
                 .OrderBy(item => item.Id)
-                .Skip(pageIndex*pageSize)
+                .Skip(pageIndexOut * pageSize)
                 .Take(pageSize)
                 .ToArray();
         }

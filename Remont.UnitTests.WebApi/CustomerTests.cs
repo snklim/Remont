@@ -120,7 +120,7 @@ namespace Remont.UnitTests.WebApi
                 db.SaveChanges();
             }
 
-            var result = _controller.Get(new Request<int> {Id = _customer.Id});
+            var result = _controller.Get(new PageInfoRequest<int> {Id = _customer.Id});
             result.Item.ShouldBeEquivalentTo(_customer);
         }
     }
