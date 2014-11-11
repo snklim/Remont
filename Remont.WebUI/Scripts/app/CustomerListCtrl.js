@@ -1,6 +1,8 @@
 ﻿
 angular.module('remontApp').controller('CustomerListCtrl', function ($scope, $http, $location, response) {
 
+    console.log(response);
+
     $scope.prevPageIndex = 0;
 
     $scope.customers = response.Items;

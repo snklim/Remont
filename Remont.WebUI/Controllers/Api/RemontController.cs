@@ -19,6 +19,8 @@ namespace Remont.WebUI.Controllers.Api
         public TKey Id { get; set; }
 
         public int PageIndex { get; set; }
+
+        public int TotalItems { get; set; }
     }
 
     public abstract class RemontController<TItem, TKey> : ApiController
@@ -35,9 +37,12 @@ namespace Remont.WebUI.Controllers.Api
         {
             if (request.Id.Equals(default(TKey)))
             {
+                int totalItems;
+                var items = _repository.Get(request.PageIndex, out totalItems);
+                request.TotalItems = totalItems;
                 return new Response<TItem, TKey>
                 {
-                    Items = _repository.Get(request.PageIndex),
+                    Items = items,
                     Request = request
                 };
             }

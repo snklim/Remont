@@ -9,7 +9,7 @@ namespace Remont.Common.Repository
 
         void Delete(TKey itemId);
 
-        IList<TItem> Get(int pageIndex);
+        IList<TItem> Get(int pageIndex, out int totalItems);
 
         TItem Find(TKey itemId);
     }
