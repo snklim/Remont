@@ -12,14 +12,14 @@
                 </th>
             </tr>
         </thead>
-        <tbody ng-repeat="c in customers">
+        <tbody ng-repeat="item in items">
             <tr>
-                <td>{{c.Id}}</td>
-                <td>{{c.FirstName}}</td>
-                <td>{{c.LastName}}</td>
+                <td>{{ item.Id }}</td>
+                <td>{{ item.FirstName }}</td>
+                <td>{{ item.LastName }}</td>
                 <td>
                     <div style="float: right">
-                        <a ng-click="edit(c.Id)" class="glyphicon glyphicon-pencil"></a>
+                        <a ng-click="edit(item.Id)" class="glyphicon glyphicon-pencil"></a>
                     </div>
                 </td>
             </tr>
