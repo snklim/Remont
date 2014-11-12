@@ -9,7 +9,7 @@
         <label for="exampleInputEmail1">Order Status</label>
         <select class="form-control"
                 ng-options="os.Id as os.StatusName for os in orderStatuses"
-                ng-model="order.OrderStatusId">
+                ng-model="item.OrderStatusId">
         </select>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>

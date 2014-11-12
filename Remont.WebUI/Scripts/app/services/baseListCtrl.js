@@ -1,7 +1,7 @@
 ﻿(function() {
-    angular.module('remontApp').factory('baseListCtrl', function (pageService, dataFeeder) {
+    angular.module('remontApp').factory('baseListCtrl', function ($location, pageService, dataFeeder) {
 
-        function BaseListCtrl(scope, response, pageUrl, serviceUrl) {
+        function baseListCtrl(scope, response, pageUrl, serviceUrl) {
 
             var feeder = dataFeeder.create(serviceUrl);
 
@@ -47,7 +47,7 @@
 
         return {
             create: function (scope, response, pageUrl, serviceUrl) {
-                return new BaseListCtrl(scope, response, pageUrl, serviceUrl);
+                return new baseListCtrl(scope, response, pageUrl, serviceUrl);
             }
         };
     });

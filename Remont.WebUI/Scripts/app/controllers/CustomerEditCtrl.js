@@ -1,19 +1,7 @@
 ﻿(function() {
-    angular.module('remontApp').controller('CustomerEditCtrl', function($scope, $location, $http, customer) {
+    angular.module('remontApp').controller('CustomerEditCtrl', function ($scope, item, baseEditCtrl) {
 
-        $scope.customer = customer;
-
-        $scope.save = function() {
-
-            $http.post('/api/customer', customer).success(function(id) {
-                $location.path('customer/edit/' + id);
-            });
-
-        };
-
-        $scope.cancel = function() {
-            $location.path('customer/list/');
-        };
+        baseEditCtrl.create($scope, item, 'customer', 'api/customer');
 
     });
 })();
