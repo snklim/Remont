@@ -104,7 +104,7 @@ namespace Remont.UnitTests.WebApi
                 db.SaveChanges();
             }
 
-            var result = _controller.Get(null);
+            var result = _controller.Get(new PageInfoRequest<int>());
 
             var customerApi = result.Items.FirstOrDefault(c => c.Id == _customer.Id);
 
