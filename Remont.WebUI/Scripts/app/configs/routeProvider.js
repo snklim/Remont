@@ -2,6 +2,9 @@
     angular.module('remontApp').config(function ($routeProvider) {
         var pages = [
             {
+                name: 'customer'
+            },
+            {
                 name: 'order',
                 resolveEdit: {
                     orderStatuses: function (dataFeeder) {
@@ -12,9 +15,6 @@
                             });
                     }
                 }
-            },
-            {
-                name: 'customer'
             }
         ];
 
@@ -65,6 +65,10 @@
                 }
             });
 
+        });
+
+        $routeProvider.otherwise({
+            redirectTo: '/' + pages[0].name + '/list'
         });
 
         /*
