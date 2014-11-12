@@ -1,11 +1,11 @@
 ﻿
-angular.module('remontApp').controller('CustomerListCtrl', function ($scope, $location, response, dataFeeder, pageService) {
+angular.module('remontApp').controller('CustomerListCtrl', function ($scope, $location, response, feeder, pageService) {
 
     $scope.pageInfo = response.PageInfoRequest;
 
     $scope.customers = response.Items;
 
-    var feeder = dataFeeder.create('/api/customer');
+    //var feeder = dataFeeder.create('/api/customer');
 
     $scope.pages = pageService.getPages($scope.pageInfo.PageIndex, $scope.pageInfo.TotalPages);
 
