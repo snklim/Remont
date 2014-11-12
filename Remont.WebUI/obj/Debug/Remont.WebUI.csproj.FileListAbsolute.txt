@@ -3,6 +3,9 @@ C:\work\Remont\Remont.WebUI\bin\Remont.WebUI.dll
 C:\work\Remont\Remont.WebUI\bin\Remont.WebUI.pdb
 C:\work\Remont\Remont.WebUI\bin\EntityFramework.dll
 C:\work\Remont\Remont.WebUI\bin\EntityFramework.SqlServer.dll
+C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.dll
+C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
 C:\work\Remont\Remont.WebUI\bin\Newtonsoft.Json.dll
 C:\work\Remont\Remont.WebUI\bin\Remont.Common.dll
 C:\work\Remont\Remont.WebUI\bin\Remont.DAL.dll
@@ -19,6 +22,9 @@ C:\work\Remont\Remont.WebUI\bin\Remont.Common.pdb
 C:\work\Remont\Remont.WebUI\bin\Remont.DAL.pdb
 C:\work\Remont\Remont.WebUI\bin\EntityFramework.xml
 C:\work\Remont\Remont.WebUI\bin\EntityFramework.SqlServer.xml
+C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.xml
+C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
 C:\work\Remont\Remont.WebUI\bin\System.Web.Razor.xml
 C:\work\Remont\Remont.WebUI\bin\System.Web.Webpages.xml
 C:\work\Remont\Remont.WebUI\bin\System.Web.Webpages.Deployment.xml
@@ -32,9 +38,3 @@ C:\work\Remont\Remont.WebUI\bin\System.Web.Http.WebHost.xml
 C:\work\Remont\Remont.WebUI\obj\Debug\Remont.WebUI.csprojResolveAssemblyReference.cache
 C:\work\Remont\Remont.WebUI\obj\Debug\Remont.WebUI.dll
 C:\work\Remont\Remont.WebUI\obj\Debug\Remont.WebUI.pdb
-C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.Configuration.dll
-C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.dll
-C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
-C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.xml
-C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.Configuration.xml
-C:\work\Remont\Remont.WebUI\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml

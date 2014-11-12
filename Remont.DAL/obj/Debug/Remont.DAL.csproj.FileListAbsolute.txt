@@ -8,11 +8,11 @@ C:\work\Remont\Remont.DAL\bin\Debug\Remont.Common.pdb
 C:\work\Remont\Remont.DAL\bin\Debug\EntityFramework.xml
 C:\work\Remont\Remont.DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.csprojResolveAssemblyReference.cache
-C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.dll
-C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.pdb
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.InitialCreate.resources
-C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.csproj.GenerateResource.Cache
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.OrderTable.resources
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.OrderOrderStatus.resources
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.OrderStatus.resources
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.OrderStatusId.resources
+C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.csproj.GenerateResource.Cache
+C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.dll
+C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.pdb
