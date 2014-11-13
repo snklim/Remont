@@ -1,8 +1,12 @@
 ﻿(function() {
     angular.module('remontApp').controller('TableEditCtrl', function ($scope, item, baseEditCtrl) {
 
+        if (!item.Columns) {
+            item.Columns = [];
+        }
+
         if (item.Columns.length == 0) {
-            item.Columns.push({});
+            item.Columns.push({ IsDeleted: false });
         }
 
         baseEditCtrl.create($scope, item, 'table', 'api/table');

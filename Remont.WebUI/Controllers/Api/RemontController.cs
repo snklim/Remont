@@ -9,7 +9,7 @@ namespace Remont.WebUI.Controllers.Api
 {
     public class Response<TItem, TKey>
     {
-        public IEnumerable<TItem> Items { get; set; }
+        public IList<TItem> Items { get; set; }
 
         public TItem Item { get; set; }
 

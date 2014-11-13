@@ -30,7 +30,7 @@ namespace Remont.DAL
             }
         }
 
-        public IEnumerable<TItem> Get(int pageIndex, out int totalItems, out int totalPages, out int pageIndexOut)
+        public IList<TItem> Get(int pageIndex, out int totalItems, out int totalPages, out int pageIndexOut)
         {
             const int pageSize = 5;
 
@@ -52,7 +52,7 @@ namespace Remont.DAL
                 .Skip(pageIndexOut*pageSize)
                 .Take(pageSize);
 
-            return query;
+            return query.ToList();
         }
 
         public TItem Find(TKey itemId)
@@ -60,10 +60,10 @@ namespace Remont.DAL
             return _db.Set<TItem>().Find(itemId);
         }
 
-        public IEnumerable<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
+        public IList<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
         {
             var query = _db.Set<TItem>().Where(item => !item.IsDeleted);
-            return filter != null ? filter(query) : query;
+            return filter != null ? filter(query).ToList() : query.ToList();
         }
 
         public void Dispose()
