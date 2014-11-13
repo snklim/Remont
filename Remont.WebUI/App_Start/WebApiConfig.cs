@@ -22,7 +22,14 @@ namespace Remont.WebUI
                 new HierarchicalLifetimeManager());
             container.RegisterType<IRepository<OrderStatus, int>, EntityRepository<OrderStatus, int>>(
                 new HierarchicalLifetimeManager());
+            container.RegisterType<IRepository<Table, int>, EntityRepository<Table, int>>(
+                new HierarchicalLifetimeManager());
+            container.RegisterType<IRepository<Column, int>, EntityRepository<Column, int>>(
+                new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
+
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
+                = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
             // Web API routes
             config.MapHttpAttributeRoutes();

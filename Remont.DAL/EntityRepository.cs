@@ -42,14 +42,14 @@ namespace Remont.DAL
             {
                 pageIndexOut = 0;
             }
-            else if (pageIndex >= totalPages)
+            else if (pageIndex > 0 && pageIndex >= totalPages)
             {
                 pageIndexOut = totalPages - 1;
             }
-            
+
             return _db.Set<TItem>()
                 .OrderBy(item => item.Id)
-                .Skip(pageIndexOut * pageSize)
+                .Skip(pageIndexOut*pageSize)
                 .Take(pageSize)
                 .ToArray();
         }

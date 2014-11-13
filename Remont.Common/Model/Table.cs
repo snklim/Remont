@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Remont.Common.Model
 {
-    public class BaseItem<TKey>
+    public class Table : BaseItem<int>
     {
-        public virtual TKey Id { get; set; }
+        public string TableName { get; set; }
 
-        public virtual bool IsDeleted { get; set; }
+        public virtual IList<Column> Columns { get; set; }
     }
 }

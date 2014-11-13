@@ -36,7 +36,7 @@ namespace Remont.WebUI.Controllers.Api
             _repository = repository;
         }
 
-        public Response<TItem, TKey> Get([FromUri]PageInfoRequest<TKey> pageInfoRequest)
+        public virtual Response<TItem, TKey> Get([FromUri]PageInfoRequest<TKey> pageInfoRequest)
         {
             if (pageInfoRequest.Id.Equals(default(TKey)))
             {
@@ -64,7 +64,7 @@ namespace Remont.WebUI.Controllers.Api
             };
         }
 
-        public TKey Post(TItem item)
+        public virtual TKey Post(TItem item)
         {
             return _repository.AddOrUpdate(item);
         }

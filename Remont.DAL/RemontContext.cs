@@ -16,10 +16,16 @@ namespace Remont.DAL
 
         public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
 
+        public virtual DbSet<Table> Tables { get; set; }
+
+        public virtual DbSet<Column> Columns { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<Table>().ToTable("Table");
+            modelBuilder.Entity<Column>().ToTable("Column");
 
             base.OnModelCreating(modelBuilder);
         }

@@ -16,3 +16,6 @@ C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.OrderStatusId.resource
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.csproj.GenerateResource.Cache
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.dll
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.pdb
+C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.TableColumn.resources
+C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.IsDeleted.resources
+C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.Migrations.TableName.resources

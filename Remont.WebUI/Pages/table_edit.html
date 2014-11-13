@@ -1,0 +1,13 @@
+﻿<form role="form" ng-submit="save()">
+    <div class="form-group">
+        <label>Table Name</label>
+        <input ng-model="item.TableName" class="form-control" id="exampleInputEmail1" placeholder="Enter table name">
+    </div>
+    <div class="form-group" ng-repeat="column in item.Columns | filter : {IsDeleted:false}">
+        <input ng-model="column.ColumnName" class="form-control" id="exampleInputEmail1" placeholder="Enter column name">
+        <a ng-show="addVisible($index)" href="javascript:void(0)" style="font-weight: bold" ng-click="addColumn()">Add</a>
+        <a ng-show="removeVisible($index)" href="javascript:void(0)" style="font-weight: bold" ng-click="removeColumn(column)">Remove</a>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+</form>
