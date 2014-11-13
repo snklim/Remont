@@ -35,5 +35,18 @@ namespace Remont.WebUI.Controllers.Api
 
             return tableId;
         }
+
+        public override Response<Table, int> Get([FromUri]PageInfoRequest<int> pageInfoRequest)
+        {
+            var response = base.Get(pageInfoRequest);
+
+            if (response.Item != null)
+            {
+                response.Item.Columns =
+                    _columnRepository.GetAll(query => query.Where(c => c.TableId == response.Item.Id));
+            }
+
+            return response;
+        }
     }
 }

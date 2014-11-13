@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using System.Web.UI;
 using Remont.Common.Model;
@@ -8,7 +9,7 @@ namespace Remont.WebUI.Controllers.Api
 {
     public class Response<TItem, TKey>
     {
-        public IList<TItem> Items { get; set; }
+        public IEnumerable<TItem> Items { get; set; }
 
         public TItem Item { get; set; }
 

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Remont.Common.Model;
 
 namespace Remont.Common.Repository
@@ -9,8 +11,10 @@ namespace Remont.Common.Repository
 
         void Delete(TKey itemId);
 
-        IList<TItem> Get(int pageIndex, out int totalItems, out int totalPages, out int pageIndexOut);
+        IEnumerable<TItem> Get(int pageIndex, out int totalItems, out int totalPages, out int pageIndexOut);
 
         TItem Find(TKey itemId);
+
+        IEnumerable<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
     }
 }
