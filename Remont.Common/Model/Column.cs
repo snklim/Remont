@@ -13,5 +13,7 @@ namespace Remont.Common.Model
         public int TableId { get; set; }
 
         public Table Table { get; set; }
+
+        public virtual IEnumerable<Row> Rows { get; set; }
     }
 }

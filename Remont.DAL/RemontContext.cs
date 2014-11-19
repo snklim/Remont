@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Remont.Common.Model;
 
 namespace Remont.DAL
@@ -20,8 +22,13 @@ namespace Remont.DAL
 
         public virtual DbSet<Column> Columns { get; set; }
 
+        public virtual DbSet<Row> Rows { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<Row>().ToTable("Row");
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<Table>().ToTable("Table");

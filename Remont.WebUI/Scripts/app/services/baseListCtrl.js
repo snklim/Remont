@@ -1,7 +1,7 @@
 ﻿(function() {
     angular.module('remontApp').factory('baseListCtrl', function ($location, pageService, dataFeeder) {
 
-        function baseListCtrl(scope, response, pageUrl, serviceUrl) {
+        function baseListCtrl(scope, response, pageUrl, serviceUrl, tableId) {
 
             var feeder = dataFeeder.create(serviceUrl);
 
@@ -16,7 +16,7 @@
                 if (id > 0) {
                     $location.path(pageUrl + '/edit/' + id);
                 } else {
-                    $location.path(pageUrl + '/create');
+                    $location.path(pageUrl + '/create/' + (tableId ? tableId : ''));
                 }
 
             };
@@ -46,8 +46,8 @@
         };
 
         return {
-            create: function (scope, response, pageUrl, serviceUrl) {
-                return new baseListCtrl(scope, response, pageUrl, serviceUrl);
+            create: function (scope, response, pageUrl, serviceUrl, tableId) {
+                return new baseListCtrl(scope, response, pageUrl, serviceUrl, tableId);
             }
         };
     });

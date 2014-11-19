@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Http;
 using System.Web.UI;
 using Remont.Common.Model;
@@ -7,26 +6,6 @@ using Remont.Common.Repository;
 
 namespace Remont.WebUI.Controllers.Api
 {
-    public class Response<TItem, TKey>
-    {
-        public IList<TItem> Items { get; set; }
-
-        public TItem Item { get; set; }
-
-        public PageInfoRequest<TKey> PageInfoRequest { get; set; }
-    }
-
-    public class PageInfoRequest<TKey>
-    {
-        public TKey Id { get; set; }
-
-        public int PageIndex { get; set; }
-
-        public int TotalItems { get; set; }
-
-        public int TotalPages { get; set; }
-    }
-
     public abstract class RemontController<TItem, TKey> : ApiController
         where TItem : BaseItem<TKey>
     {

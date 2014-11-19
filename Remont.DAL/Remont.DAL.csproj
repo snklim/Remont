@@ -48,39 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201411090802202_InitialCreate.cs" />
-    <Compile Include="Migrations\201411090802202_InitialCreate.Designer.cs">
-      <DependentUpon>201411090802202_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411090925547_OrderTable.cs" />
-    <Compile Include="Migrations\201411090925547_OrderTable.Designer.cs">
-      <DependentUpon>201411090925547_OrderTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411091219440_Order-OrderStatus.cs" />
-    <Compile Include="Migrations\201411091219440_Order-OrderStatus.Designer.cs">
-      <DependentUpon>201411091219440_Order-OrderStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411111858114_OrderStatus.cs" />
-    <Compile Include="Migrations\201411111858114_OrderStatus.Designer.cs">
-      <DependentUpon>201411111858114_OrderStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411111924013_OrderStatusId.cs" />
-    <Compile Include="Migrations\201411111924013_OrderStatusId.Designer.cs">
-      <DependentUpon>201411111924013_OrderStatusId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411131621111_TableColumn.cs" />
-    <Compile Include="Migrations\201411131621111_TableColumn.Designer.cs">
-      <DependentUpon>201411131621111_TableColumn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411131759542_IsDeleted.cs" />
-    <Compile Include="Migrations\201411131759542_IsDeleted.Designer.cs">
-      <DependentUpon>201411131759542_IsDeleted.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411131801445_TableName.cs" />
-    <Compile Include="Migrations\201411131801445_TableName.Designer.cs">
-      <DependentUpon>201411131801445_TableName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemontContext.cs" />
     <Compile Include="EntityRepository.cs" />
@@ -97,32 +64,6 @@
       <Project>{0b562d82-f710-459c-bac7-5788b9a59426}</Project>
       <Name>Remont.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411090802202_InitialCreate.resx">
-      <DependentUpon>201411090802202_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411090925547_OrderTable.resx">
-      <DependentUpon>201411090925547_OrderTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411091219440_Order-OrderStatus.resx">
-      <DependentUpon>201411091219440_Order-OrderStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411111858114_OrderStatus.resx">
-      <DependentUpon>201411111858114_OrderStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411111924013_OrderStatusId.resx">
-      <DependentUpon>201411111924013_OrderStatusId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411131621111_TableColumn.resx">
-      <DependentUpon>201411131621111_TableColumn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411131759542_IsDeleted.resx">
-      <DependentUpon>201411131759542_IsDeleted.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411131801445_TableName.resx">
-      <DependentUpon>201411131801445_TableName.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

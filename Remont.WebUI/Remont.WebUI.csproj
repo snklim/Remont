@@ -114,6 +114,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Pages\generic_list.html" />
+    <Content Include="Pages\generic_edit.html" />
     <Content Include="Pages\table_edit.html" />
     <Content Include="Pages\order_edit.html" />
     <Content Include="Pages\customer_edit.html" />
@@ -130,6 +132,8 @@
     <Content Include="Scripts\app\configs\filterProvider.js" />
     <Content Include="Scripts\app\configs\httpProvider.js" />
     <Content Include="Scripts\app\configs\routeProvider.js" />
+    <Content Include="Scripts\app\controllers\GenericListCtrl.js" />
+    <Content Include="Scripts\app\controllers\GenericEditCtrl.js" />
     <Content Include="Scripts\app\controllers\TableEditCtrl.js" />
     <Content Include="Scripts\app\controllers\OrderEditCtrl.js" />
     <Content Include="Scripts\app\controllers\CustomerEditCtrl.js" />
@@ -230,9 +234,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\CustomerController.cs" />
+    <Compile Include="Controllers\Api\GenericController.cs" />
     <Compile Include="Controllers\Api\OrderStatusController.cs" />
     <Compile Include="Controllers\Api\OrderController.cs" />
+    <Compile Include="Controllers\Api\PageInfoRequest.cs" />
     <Compile Include="Controllers\Api\RemontController.cs" />
+    <Compile Include="Controllers\Api\Response.cs" />
     <Compile Include="Controllers\Api\TableController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

@@ -16,16 +16,14 @@ namespace Remont.WebUI
         {
             // Web API configuration and services
             var container = new UnityContainer();
-            container.RegisterType<IRepository<Customer, int>, EntityRepository<Customer, int>>(
-                new HierarchicalLifetimeManager());
-            container.RegisterType<IRepository<Order, int>, EntityRepository<Order, int>>(
-                new HierarchicalLifetimeManager());
-            container.RegisterType<IRepository<OrderStatus, int>, EntityRepository<OrderStatus, int>>(
-                new HierarchicalLifetimeManager());
-            container.RegisterType<IRepository<Table, int>, EntityRepository<Table, int>>(
-                new HierarchicalLifetimeManager());
-            container.RegisterType<IRepository<Column, int>, EntityRepository<Column, int>>(
-                new HierarchicalLifetimeManager());
+
+            container.RegisterType<IRepository<Customer, int>, EntityRepository<Customer, int>>();
+            container.RegisterType<IRepository<Order, int>, EntityRepository<Order, int>>();
+            container.RegisterType<IRepository<OrderStatus, int>, EntityRepository<OrderStatus, int>>();
+            container.RegisterType<IRepository<Table, int>, EntityRepository<Table, int>>();
+            container.RegisterType<IRepository<Column, int>, EntityRepository<Column, int>>();
+            container.RegisterType<IRepository<Row, int>, EntityRepository<Row, int>>();
+
             config.DependencyResolver = new UnityResolver(container);
 
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling

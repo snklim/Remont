@@ -42,6 +42,7 @@
     <Compile Include="Model\BaseItem.cs" />
     <Compile Include="Model\Column.cs" />
     <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Row.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderStatus.cs" />
     <Compile Include="Model\Table.cs" />

@@ -1,0 +1,9 @@
+﻿<form role="form" ng-submit="save()">
+    <div class="form-group" ng-repeat="c in item.Columns">
+        <label>{{ c.ColumnName }}</label>
+        <input ng-model="values[$index]" class="form-control" id="exampleInputEmail1"
+               placeholder="Enter {{ c.ColumnName }}">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+</form>
