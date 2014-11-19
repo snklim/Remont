@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\BaseItem.cs" />
+    <Compile Include="Model\Cell.cs" />
     <Compile Include="Model\Column.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Row.cs" />

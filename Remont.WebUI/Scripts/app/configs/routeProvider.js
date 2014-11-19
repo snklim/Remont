@@ -96,7 +96,7 @@
                 }
             }
 
-            $routeProvider.when('/' + name + '/edit/:id', {
+            $routeProvider.when('/' + name + '/edit' + params + '/:id', {
                 templateUrl: 'pages/' + name + '_edit.html',
                 controller: '' + ctrlName + 'EditCtrl',
                 resolve: resolveEdit

@@ -14,28 +14,28 @@ namespace Remont.WebUI.Controllers.Api
     {
         public int TableId { get; set; }
 
-        public int RecordId { get; set; }
-
-        public string[] Values { get; set; }
+        public Row Row { get; set; }
     }
 
     public class GenericController : ApiController
     {
         private readonly IRepository<Table, int> _tableRepository;
         private readonly IRepository<Column, int> _columnRepository;
-        private readonly IRepository<Row, int> _rowRepository;
+		private readonly IRepository<Row, int> _rowRepository;
+		private readonly IRepository<Cell, int> _cellRepository;
 
         public GenericController(IRepository<Table, int> tableRepository, 
             IRepository<Column, int> columnRepository,
-            IRepository<Row, int> rowRepository)
+            IRepository<Row, int> rowRepository, IRepository<Cell, int> cellRepository)
         {
             _tableRepository = tableRepository;
             _columnRepository = columnRepository;
             _rowRepository = rowRepository;
+	        _cellRepository = cellRepository;
         }
 
-        [Route("api/generic/{tableId:int}/{recordId:int?}")]
-        public Response<Table, int> Get(int tableId, int recordId = -1)
+        [Route("api/generic/{tableId:int}/{rowId:int?}")]
+		public Response<Table, int> Get(int tableId, int rowId = -1)
         {
             var table = _tableRepository.Find(tableId);
 
@@ -44,21 +44,34 @@ namespace Remont.WebUI.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            table.Columns = _columnRepository.GetAll(items => items.Where(item => item.TableId == tableId));
+			table.Columns = _columnRepository.GetAll(items => items.Where(item => item.TableId == tableId));
 
-            object rows = null;
+	        if (rowId == -1)
+	        {
+		        table.Rows = _rowRepository.GetAll(items => items.Where(item => item.TableId == tableId));
+		        table.Rows.ForEach(r => r.Cells = _cellRepository.GetAll(items => items.Where(item => item.RowId == r.Id)));
+	        }
+			else if (rowId == 0)
+			{
+				table.Rows = new[]
+				{
+					new Row
+					{
+						TableId = tableId,
+						Cells = table.Columns.Select(c => new Cell
+						{
+							ColumnId = c.Id,
+							Column = c,
+							TableId = tableId
+						})
+					}
+				};
+			}
 
-            if (recordId == -1)
-            {
-                rows = _rowRepository
-                    .GetAll(items => items.Where(item => item.TableId == tableId))
-                    .GroupBy(r => r.RecordId);
-            }
-
-            return new Response<Table, int>
+	        return new Response<Table, int>
             {
                 Items = new[] {table},
-                Bag = rows,
+				Bag = table.Rows,
                 PageInfoRequest = new PageInfoRequest<int>
                 {
                     Id = 1,
@@ -69,47 +82,18 @@ namespace Remont.WebUI.Controllers.Api
             };
         }
 
-        public int Post(TableData data)
+        public int Post(Row row)
         {
-            var table = _tableRepository.Find(data.TableId);
+	        _rowRepository.AddOrUpdate(row);
 
-            if (table == null)
-            {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            }
+	        row.Cells.ForEach(c =>
+	        {
+		        c.RowId = row.Id;
+		        c.Column = null;
+		        _cellRepository.AddOrUpdate(c);
+	        });
 
-            var recordId = data.RecordId;
-
-            if (recordId <= 0)
-            {
-                var rows = _rowRepository
-                    .GetAll(items => items.Where(r => r.TableId == data.TableId));
-                if (rows.Any())
-                    recordId = rows.Max(r => r.RecordId) + 1;
-
-                var columns = _columnRepository.GetAll(items => items.Where(item => item.TableId == data.TableId));
-
-                var index = 0;
-                columns.ForEach(c =>
-                {
-                    var row = new Row
-                    {
-                        ColumnId = c.Id,
-                        //Column = c,
-                        //Table = table,
-                        RecordId = recordId,
-                        TableId = data.TableId,
-                        Value = index < data.Values.Length ? data.Values[index] : string.Empty
-                    };
-
-                    _rowRepository.AddOrUpdate(row);
-
-                    index++;
-                });
-
-            }
-
-            return recordId;
+			return row.Id;
         }
     }
 }

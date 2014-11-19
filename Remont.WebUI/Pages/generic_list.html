@@ -11,8 +11,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="r in rows">
-                <td ng-repeat="c in item.Columns">{{ r[$index].Value }}</td>
+            <tr ng-repeat="row in rows">
+                <td ng-repeat="cell in row.Cells">{{ cell.Value }}</td>
                 <td>
                     <div style="float: right">
                         <a ng-click="edit(item.Id)" class="glyphicon glyphicon-pencil"></a>

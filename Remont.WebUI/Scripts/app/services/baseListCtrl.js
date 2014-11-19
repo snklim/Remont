@@ -14,7 +14,7 @@
             scope.edit = function (id) {
 
                 if (id > 0) {
-                    $location.path(pageUrl + '/edit/' + id);
+                    $location.path(pageUrl + '/edit/' + (tableId ? tableId + '/' : '') + id);
                 } else {
                     $location.path(pageUrl + '/create/' + (tableId ? tableId : ''));
                 }

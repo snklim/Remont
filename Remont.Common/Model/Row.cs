@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Remont.Common.Model
 {
@@ -10,14 +6,8 @@ namespace Remont.Common.Model
     {
         public Table Table { get; set; }
 
-        public Column Column { get; set; }
-
         public int TableId { get; set; }
 
-        public int ColumnId { get; set; }
-
-        public int RecordId { get; set; }
-
-        public string Value { get; set; }
+		public IEnumerable<Cell> Cells { get; set; }
     }
 }

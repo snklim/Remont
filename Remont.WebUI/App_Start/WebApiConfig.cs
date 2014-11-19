@@ -22,7 +22,8 @@ namespace Remont.WebUI
             container.RegisterType<IRepository<OrderStatus, int>, EntityRepository<OrderStatus, int>>();
             container.RegisterType<IRepository<Table, int>, EntityRepository<Table, int>>();
             container.RegisterType<IRepository<Column, int>, EntityRepository<Column, int>>();
-            container.RegisterType<IRepository<Row, int>, EntityRepository<Row, int>>();
+			container.RegisterType<IRepository<Row, int>, EntityRepository<Row, int>>();
+			container.RegisterType<IRepository<Cell, int>, EntityRepository<Cell, int>>();
 
             config.DependencyResolver = new UnityResolver(container);
 

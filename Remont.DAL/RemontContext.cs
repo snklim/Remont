@@ -22,13 +22,16 @@ namespace Remont.DAL
 
         public virtual DbSet<Column> Columns { get; set; }
 
-        public virtual DbSet<Row> Rows { get; set; }
+		public virtual DbSet<Row> Rows { get; set; }
+
+		public virtual DbSet<Cell> Cells { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-            modelBuilder.Entity<Row>().ToTable("Row");
+			modelBuilder.Entity<Row>().ToTable("Row");
+			modelBuilder.Entity<Cell>().ToTable("Cell");
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<Table>().ToTable("Table");

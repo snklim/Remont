@@ -10,3 +10,15 @@ C:\work\Remont\Remont.DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.csprojResolveAssemblyReference.cache
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.dll
 C:\work\Remont\Remont.DAL\obj\Debug\Remont.DAL.pdb
+D:\work\Remont-master\Remont.DAL\bin\Debug\Remont.DAL.dll.config
+D:\work\Remont-master\Remont.DAL\bin\Debug\Remont.DAL.dll
+D:\work\Remont-master\Remont.DAL\bin\Debug\Remont.DAL.pdb
+D:\work\Remont-master\Remont.DAL\bin\Debug\EntityFramework.dll
+D:\work\Remont-master\Remont.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\work\Remont-master\Remont.DAL\bin\Debug\Remont.Common.dll
+D:\work\Remont-master\Remont.DAL\bin\Debug\Remont.Common.pdb
+D:\work\Remont-master\Remont.DAL\bin\Debug\EntityFramework.xml
+D:\work\Remont-master\Remont.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\work\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.csprojResolveAssemblyReference.cache
+D:\work\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.dll
+D:\work\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.pdb
