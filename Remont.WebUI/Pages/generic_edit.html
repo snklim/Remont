@@ -1,5 +1,5 @@
 ﻿<form role="form" ng-submit="save()">
-    <div class="form-group" ng-repeat="cell in row.Cells">
+    <div class="form-group" ng-repeat="cell in item.Cells">
         <label>{{ cell.Column.ColumnName }}</label>
         <input ng-model="cell.Value" class="form-control" id="exampleInputEmail1"
                placeholder="Enter {{ cell.Column.ColumnName }}">

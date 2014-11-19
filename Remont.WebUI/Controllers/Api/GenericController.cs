@@ -51,6 +51,17 @@ namespace Remont.WebUI.Controllers.Api
 		        table.Rows = _rowRepository.GetAll(items => items.Where(item => item.TableId == tableId));
 		        table.Rows.ForEach(r => r.Cells = _cellRepository.GetAll(items => items.Where(item => item.RowId == r.Id)));
 	        }
+            else if (rowId > 0)
+            {
+                table.Rows = _rowRepository.GetAll(items => items.Where(item => item.Id == rowId));
+                table.Rows.ForEach(r => r.Cells = _cellRepository
+                    .GetAll(items => items.Where(item => item.RowId == r.Id))
+                    .Select(c =>
+                    {
+                        c.Column = _columnRepository.GetAll(items => items.Where(item => item.Id == c.ColumnId)).FirstOrDefault();
+                        return c;
+                    }));
+            }
 			else if (rowId == 0)
 			{
 				table.Rows = new[]
@@ -82,7 +93,8 @@ namespace Remont.WebUI.Controllers.Api
             };
         }
 
-        public int Post(Row row)
+        [Route("api/generic/{tableId:int}")]
+        public int Post([FromUri]int tableId, Row row)
         {
 	        _rowRepository.AddOrUpdate(row);
 

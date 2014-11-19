@@ -6,7 +6,7 @@
 
             scope.save = function () {
 
-                $http.post('/' + serviceUrl + '', item).success(function (id) {
+                $http.post('' + serviceUrl + '', item).success(function (id) {
                     $location.path('' + pageUrl + '/edit/' + id);
                 });
 
