@@ -1,47 +1,11 @@
 ﻿(function() {
-    angular.module('remontApp').config(function ($routeProvider) {
-        var pages = [
+    angular.module('remontApp')
+        .constant('pages', [
             {
-                name: 'table'
-            },
-            {
-                name: 'generic',
-                title: 'Customers',
-                params: '/1',
-                resolveList: {
-                    tableId: function () {
-                        return 1;
-                    }
-                },
-                resolveCreate: {
-                    tableId: function() {
-                        return 1;
-                    },
-                    item: function ($route, dataFeeder) {
-                        return dataFeeder
-                            .create('/api/generic/1/0')
-                            .get($route.current.params, function (data) {
-                                return data.Items[0];
-                            });
-                    }
-                }
-            },
-            {
-                name: 'generic',
-                title: 'Orders',
-                params: '/2',
-                resolveList: {
-                    tableId: function () {
-                        return 2;
-                    }
-                },
-                resolveCreate: {
-                    tableId: function () {
-                        return 2;
-                    }
-                }
-            }
-        ];
+                name: 'table',
+                title: 'Table'
+            }])
+        .config(function ($routeProvider, pages) {
 
         $.each(pages, function(i, page) {
 

@@ -6,20 +6,8 @@
 <h2>Index</h2>
 <div class="row">
     <div class="col-md-2" ng-controller="LeftPanelCtrl">
-        <ul class="nav nav-pills nav-stacked" role="tablist">
-            <li ng-class="{active: isActive('table')}"><a href="/#/table/list">Tables</a></li>
-        </ul>
-        @*<ul class="nav nav-pills nav-stacked" role="tablist">
-            <li ng-class="{active: isActive('customer')}"><a href="/#/customer/list">Customers</a></li>
-        </ul>
-        <ul class="nav nav-pills nav-stacked" role="tablist">
-            <li ng-class="{active: isActive('order')}"><a href="/#/order/list">Orders</a></li>
-        </ul>*@
-        <ul class="nav nav-pills nav-stacked" role="tablist">
-            <li ng-class="{active: isActive('generic/list/1')}"><a href="/#/generic/list/1">Customers</a></li>
-        </ul>
-        <ul class="nav nav-pills nav-stacked" role="tablist">
-            <li ng-class="{active: isActive('generic/list/2')}"><a href="/#/generic/list/2">Orders</a></li>
+        <ul class="nav nav-pills nav-stacked" role="tablist" ng-repeat="page in pages">
+            <li ng-class="{active: isActive(page.name)}"><a href="/#/{{ page.name }}/list">{{ page.title }}</a></li>
         </ul>
     </div>
     <div class="col-md-8">
