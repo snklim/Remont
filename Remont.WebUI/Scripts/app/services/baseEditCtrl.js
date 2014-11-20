@@ -6,8 +6,12 @@
 
             scope.save = function () {
 
-                $http.post('' + serviceUrl + '', item).success(function (id) {
-                    $location.path('' + pageUrl + '/edit/' + id);
+                $http.post('' + serviceUrl + '', item).success(function (newItem) {
+                    if (scope.item.Id == 0) {
+                        $location.path('' + pageUrl + '/edit/' + newItem.Id);
+                    } else if (scope.onSave) {
+                        scope.onSave(newItem);
+                    }
                 });
 
             };

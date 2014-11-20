@@ -31,5 +31,12 @@
             column.IsDeleted = true;
         };
 
+        $scope.onSave = function (newItem) {
+            item.Columns.splice(0, item.Columns.length);
+            $.each(newItem.Columns, function(i, column) {
+                item.Columns.push(column);
+            });
+        };
+
     });
 })();

@@ -47,7 +47,7 @@ namespace Remont.UnitTests.WebApi
         [Test]
         public void Should_create()
         {
-            _customer.Id = _controller.Post(_customer);
+            _customer = _controller.Post(_customer);
             using (var db = new RemontContext())
             {
                 var customerDb = db.Customers.Find(_customer.Id);

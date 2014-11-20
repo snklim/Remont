@@ -17,20 +17,23 @@ namespace Remont.WebUI.Controllers.Api
             _columnRepository = columnRepository;
         }
 
-        public override int Post(Table item)
+		public override Table Post(Table item)
         {
-            int tableId = base.Post(item);
+			item = base.Post(item);
             
             if (item.Columns != null)
             {
                 item.Columns.ForEach(c =>
                 {
-                    c.TableId = tableId;
-                    _columnRepository.AddOrUpdate(c);
+	                if (c.Id <= 0)
+	                {
+		                c.TableId = item.Id;
+		                c.Id = _columnRepository.AddOrUpdate(c).Id;
+	                }
                 });
             }
 
-            return tableId;
+			return item;
         }
 
         public override Response<Table, int> Get([FromUri]PageInfoRequest<int> pageInfoRequest)

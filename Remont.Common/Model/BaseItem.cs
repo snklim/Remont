@@ -1,6 +1,4 @@
 ﻿
-using System.Collections.Generic;
-
 namespace Remont.Common.Model
 {
     public class BaseItem<TKey>
@@ -10,7 +8,7 @@ namespace Remont.Common.Model
         public virtual bool IsDeleted { get; set; }
     }
 
-	public class TableBaseItem<TKey> : BaseItem<TKey>
+	public class TableSpecificBaseItem<TKey> : BaseItem<TKey>
 		where TKey : struct
 	{
 		public virtual TKey TableId { get; set; }

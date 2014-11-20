@@ -37,7 +37,7 @@ namespace Remont.WebUI.Controllers.Api
             };
         }
 
-        public virtual TKey Post(TItem item)
+		public virtual TItem Post(TItem item)
         {
             return _repository.AddOrUpdate(item);
         }

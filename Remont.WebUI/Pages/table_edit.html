@@ -4,7 +4,29 @@
         <input ng-model="item.TableName" class="form-control" id="exampleInputEmail1" placeholder="Enter table name">
     </div>
     <div class="form-group" ng-repeat="column in item.Columns | filter : {IsDeleted:false}">
-        <input ng-model="column.ColumnName" class="form-control" id="exampleInputEmail1" placeholder="Enter column name">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Column {{ $index + 1 }} ({{ column.Id }})</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Column Name</label>
+                    <input ng-model="column.ColumnName" class="form-control" placeholder="Enter Column Name">
+                </div>
+                <div class="form-group">
+                    <label>Control Type</label>
+                    <select class="form-control" ng-model="column.ControlId">
+                        <option value="1">TextBox</option>
+                        <option value="2">Select</option>
+                    </select>
+                </div>
+                <div class="form-group" ng-show="column.ControlId == 2">
+                    <label>Data Source</label>
+                    <input class="form-control" placeholder="Enter Data Source">
+                </div>
+            </div>
+        </div>
+            
         <a ng-show="addVisible($index)" href="javascript:void(0)" style="font-weight: bold" ng-click="addColumn()">Add</a>
         <a ng-show="removeVisible($index)" href="javascript:void(0)" style="font-weight: bold" ng-click="removeColumn(column)">Remove</a>
     </div>

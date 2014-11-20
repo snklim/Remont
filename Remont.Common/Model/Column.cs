@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Remont.Common.Model
 {
-    public class Column : BaseItem<int>
+    public class Column : TableSpecificBaseItem<int>
     {
         public string ColumnName { get; set; }
 
-        public int TableId { get; set; }
+		public Control Control { get; set; }
+
+		public int ControlId { get; set; }
+
+		public string DataSource { get; set; }
 
         public Table Table { get; set; }
 

@@ -13,12 +13,12 @@ namespace Remont.DAL
     {
         private RemontContext _db = new RemontContext();
 
-        public TKey AddOrUpdate(TItem item)
+		public TItem AddOrUpdate(TItem item)
         {
             _db.Set<TItem>().AddOrUpdate(item);
             _db.SaveChanges();
 
-            return item.Id;
+            return item;
         }
 
         public void Delete(TKey itemId)

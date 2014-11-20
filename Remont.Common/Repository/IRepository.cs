@@ -7,7 +7,7 @@ namespace Remont.Common.Repository
 {
     public interface IRepository<TItem, TKey> where TItem : BaseItem<TKey>
     {
-        TKey AddOrUpdate(TItem item);
+		TItem AddOrUpdate(TItem item);
 
         void Delete(TKey itemId);
 

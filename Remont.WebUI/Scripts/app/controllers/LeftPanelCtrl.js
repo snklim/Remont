@@ -3,8 +3,12 @@
 
         $scope.pages = pages;
 
+        var pageReg = /^#\/(\w+)\/(\w+)(\/\d+)?$/;
+
         $scope.isActive = function (path) {
-            return path == /^#\/(\w+)\/(\w+)$/.exec(location.hash)[1];
+            if (pageReg.test(location.hash))
+                return path == pageReg.exec(location.hash)[1];
+            return false;
         }
 
     });

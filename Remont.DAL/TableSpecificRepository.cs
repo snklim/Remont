@@ -7,7 +7,7 @@ using Remont.Common.Model;
 namespace Remont.DAL
 {
 	public class TableSpecificRepository<TItem> : EntityRepository<TItem, int>
-		where TItem : TableBaseItem<int>
+		where TItem : TableSpecificBaseItem<int>
 	{
 		public override IList<TItem> Get(PageInfoRequest<int> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
 		{

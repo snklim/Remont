@@ -20,7 +20,9 @@ namespace Remont.DAL
 
         public virtual DbSet<Table> Tables { get; set; }
 
-        public virtual DbSet<Column> Columns { get; set; }
+		public virtual DbSet<Column> Columns { get; set; }
+
+		public virtual DbSet<Control> Controls { get; set; }
 
 		public virtual DbSet<Row> Rows { get; set; }
 
@@ -32,11 +34,12 @@ namespace Remont.DAL
 
 			modelBuilder.Entity<Row>().ToTable("Row");
 			modelBuilder.Entity<Cell>().ToTable("Cell");
-            modelBuilder.Entity<Customer>().ToTable("Customer");
+			modelBuilder.Entity<Customer>().ToTable("Customer");
+			modelBuilder.Entity<Control>().ToTable("Control");
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<Table>().ToTable("Table");
             modelBuilder.Entity<Column>().ToTable("Column");
-
+			
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -1,7 +1,7 @@
 ﻿
 namespace Remont.Common.Model
 {
-	public class Cell : BaseItem<int>
+	public class Cell : TableSpecificBaseItem<int>
 	{
 		public Row Row { get; set; }
 
@@ -12,8 +12,6 @@ namespace Remont.Common.Model
 		public int ColumnId { get; set; }
 
 		public Table Table { get; set; }
-
-		public int TableId { get; set; }
 
 		public string Value { get; set; }
 	}
