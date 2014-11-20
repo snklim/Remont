@@ -46,7 +46,7 @@
             };
 
             scope.paginationVisible = function () {
-                return response.PageInfoRequest.TotalPages > 0;
+                return response.PageInfoRequest.TotalPages > 1;
             };
         };
 

@@ -1,50 +1,6 @@
 ﻿(function () {
-
-    var itemResolvers = [
-
-        function (serviceUrl, tableId) {
-
-            return function ($route, dataFeeder) {
-
-                var id = $route && $route.current && $route.current.params && $route.current.params.id ?
-                    $route.current.params.id : 0;
-
-                var params = {
-                    tableId: tableId,
-                    id: id
-                };
-
-                return dataFeeder
-                    .create(serviceUrl)
-                    .get(params, function(data) {
-                        return data.Item;
-                    });
-            }
-        },
-
-        function (serviceUrl, tableId) {
-
-            return function ($route, dataFeeder) {
-
-                var id = $route && $route.current && $route.current.params && $route.current.params.id ?
-                    $route.current.params.id : 0;
-
-                var params = {
-                    tableId: tableId,
-                    id: id
-                };
-
-                return dataFeeder
-                    .create(serviceUrl)
-                    .get(params, function (data) {
-                        return data.Items[0].Rows[0];
-                    });
-            }
-        }
-
-    ];
-
-    function resolver(pageUrl, ctrlName, title, serviceUrl, itemResolverId, tableId) {
+    
+    function resolver(pageUrl, ctrlName, title, serviceUrl, tableId) {
 
         var self = {
             name: pageUrl,
@@ -63,7 +19,26 @@
                     }
                 },
 
-                item: itemResolvers[itemResolverId](serviceUrl, tableId),
+                item: function ($route, dataFeeder) {
+
+                    var id = $route && $route.current && $route.current.params && $route.current.params.id ?
+                        $route.current.params.id : 0;
+
+                    if (tableId < 0 && id == 0) {
+                        return {};
+                    }
+
+                    var params = {
+                        tableId: tableId,
+                        id: id
+                    };
+
+                    return dataFeeder
+                        .create(serviceUrl)
+                        .get(params, function (data) {
+                            return data.Item;
+                        });
+                },
 
                 response: function (dataFeeder) {
                     return dataFeeder.create(serviceUrl).get({
@@ -78,7 +53,7 @@
     };
 
     window.pages = [
-        new resolver('table', 'Table', 'Table', '/api/table/', 0),
-        new resolver('customer', 'Generic', 'Customer', '/api/generic', 0, 1)
+        new resolver('table', 'Table', 'Table', '/api/table/', -1),
+        new resolver('customer', 'Generic', 'Customer', '/api/generic', 1)
     ];
 })();
