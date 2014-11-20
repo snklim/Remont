@@ -3,8 +3,8 @@
 
         $scope.pages = pages;
 
-        $scope.isActive = function(path) {
-            return location.hash.indexOf(path) >= 0;
+        $scope.isActive = function (path) {
+            return path == /^#\/(\w+)\/(\w+)$/.exec(location.hash)[1];
         }
 
     });

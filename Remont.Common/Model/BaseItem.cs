@@ -1,8 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Remont.Common.Model
 {
@@ -12,4 +9,10 @@ namespace Remont.Common.Model
 
         public virtual bool IsDeleted { get; set; }
     }
+
+	public class TableBaseItem<TKey> : BaseItem<TKey>
+		where TKey : struct
+	{
+		public virtual TKey TableId { get; set; }
+	}
 }

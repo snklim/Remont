@@ -51,7 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemontContext.cs" />
     <Compile Include="EntityRepository.cs" />
-    <Compile Include="RowRepository.cs" />
+    <Compile Include="TableSpecificRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
