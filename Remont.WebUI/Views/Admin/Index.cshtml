@@ -8,7 +8,16 @@
 @section PagesDefinition{
     <script>
         window.pages = [
-            { pageUrl: 'table', ctrlName: 'Table', title: 'Table', serviceUrl: '/api/table/', tableId: -1 }
+            {
+                pageUrl: 'table', ctrlName: 'Table', title: 'Table', serviceUrl: '/api/table/', tableId: -1,
+                resolverEdit: {
+                    controls: function (dataFeeder) {
+                        return dataFeeder.create('/api/control').get(null, function(data) {
+                            return data.Items;
+                        });
+                    }
+                }
+            }
         ];
     </script>
 }

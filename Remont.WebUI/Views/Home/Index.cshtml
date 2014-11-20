@@ -9,14 +9,12 @@
 
 @section PagesDefinition{
     <script>
-    window.pages = [
-        //{ pageUrl: 'customer', ctrlName: 'Generic', title: 'Customer', serviceUrl: '/api/generic', tableId: 1 }
-    ];
+    window.pages = [];
 
     @foreach (Table table in ViewBag.Tables)
         {
             <text>window.pages.push({
-        pageUrl: '@table.TableName.ToLowerInvariant()',
+        pageUrl: '@table.TableName.ToLowerInvariant().Replace(" ", "")',
         ctrlName: 'Generic',
         title: '@table.TableName',
         serviceUrl: '/api/generic',

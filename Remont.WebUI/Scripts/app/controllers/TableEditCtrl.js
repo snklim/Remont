@@ -1,5 +1,7 @@
 ﻿(function() {
-    angular.module('remontApp').controller('TableEditCtrl', function ($scope, item, baseEditCtrl) {
+    angular.module('remontApp').controller('TableEditCtrl', function ($scope, item, baseEditCtrl, controls) {
+
+        $scope.controls = controls;
 
         if (!item.Columns) {
             item.Columns = [];

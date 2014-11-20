@@ -10,18 +10,18 @@ namespace Remont.WebUI.Controllers.Api
     public abstract class RemontController<TItem, TKey> : ApiController
         where TItem : BaseItem<TKey>
     {
-        private readonly IRepository<TItem, TKey> _repository;
+        protected readonly IRepository<TItem, TKey> Repository;
 
         protected RemontController(IRepository<TItem, TKey> repository)
         {
-            _repository = repository;
+            Repository = repository;
         }
 
         public virtual Response<TItem, TKey> Get([FromUri]PageInfoRequest<TKey> pageInfoRequest)
         {
             if (pageInfoRequest.Id.Equals(default(TKey)))
             {
-                var items = _repository.Get(pageInfoRequest);
+                var items = Repository.Get(pageInfoRequest);
 
                 return new Response<TItem, TKey>
                 {
@@ -32,19 +32,19 @@ namespace Remont.WebUI.Controllers.Api
 
             return new Response<TItem, TKey>
             {
-                Item = _repository.Find(pageInfoRequest.Id),
+                Item = Repository.Find(pageInfoRequest.Id),
                 PageInfoRequest = pageInfoRequest
             };
         }
 
 		public virtual TItem Post(TItem item)
         {
-            return _repository.AddOrUpdate(item);
+            return Repository.AddOrUpdate(item);
         }
 
         public void Delete(TKey itemId)
         {
-            _repository.Delete(itemId);
+            Repository.Delete(itemId);
         }
     }
 }

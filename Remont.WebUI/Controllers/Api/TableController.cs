@@ -25,11 +25,8 @@ namespace Remont.WebUI.Controllers.Api
             {
                 item.Columns.ForEach(c =>
                 {
-	                if (c.Id <= 0)
-	                {
-		                c.TableId = item.Id;
-		                c.Id = _columnRepository.AddOrUpdate(c).Id;
-	                }
+                    c.TableId = item.Id;
+                    c.Id = _columnRepository.AddOrUpdate(c).Id;
                 });
             }
 

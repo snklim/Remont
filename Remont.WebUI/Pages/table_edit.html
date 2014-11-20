@@ -15,14 +15,12 @@
                 </div>
                 <div class="form-group">
                     <label>Control Type</label>
-                    <select class="form-control" ng-model="column.ControlId">
-                        <option value="1">TextBox</option>
-                        <option value="2">Select</option>
-                    </select>
+                    <select class="form-control" ng-model="column.ControlId"
+                            ng-options="control.Id as control.ControlId for control in controls"></select>
                 </div>
                 <div class="form-group" ng-show="column.ControlId == 2">
                     <label>Data Source</label>
-                    <input class="form-control" placeholder="Enter Data Source">
+                    <input class="form-control" ng-model="column.DataSource" placeholder="Enter Data Source">
                 </div>
             </div>
         </div>

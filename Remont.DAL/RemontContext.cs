@@ -10,6 +10,7 @@ namespace Remont.DAL
         public RemontContext()
             : base("Remont")
         {
+            Database.SetInitializer(new RemontContextInitializer());
         }
 
         public virtual DbSet<Customer> Customers { get; set; }
