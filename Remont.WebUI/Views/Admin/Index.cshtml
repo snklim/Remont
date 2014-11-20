@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@{ Html.RenderPartial("_LeftPanel"); }
+
+@section PagesDefinition{
+    <script>
+        window.pages = [
+            { pageUrl: 'table', ctrlName: 'Table', title: 'Table', serviceUrl: '/api/table/', tableId: -1 }
+        ];
+    </script>
+}

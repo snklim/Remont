@@ -11,7 +11,7 @@ namespace Remont.Common.Repository
 
         void Delete(TKey itemId);
 
-        IList<TItem> Get(PageInfoRequest<TKey> pageInfoRequest);
+		IList<TItem> Get(PageInfoRequest<TKey> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
 
         TItem Find(TKey itemId);
 

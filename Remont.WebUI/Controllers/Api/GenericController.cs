@@ -42,7 +42,9 @@ namespace Remont.WebUI.Controllers.Api
 			table.Columns = _columnRepository.GetAll(items => items.Where(item => item.TableId == tableId));
 			
             table.Rows = _rowRepository.Get(pageInfoRequest);
-            table.Rows.ForEach(r => r.Cells = _cellRepository.GetAll(items => items.Where(item => item.RowId == r.Id)));
+	        table.Rows.ForEach(
+		        r => r.Cells = _cellRepository
+			        .GetAll(items => items.Where(item => item.TableId == table.Id && item.RowId == r.Id)));
 
 	        var row = new Row
 	        {

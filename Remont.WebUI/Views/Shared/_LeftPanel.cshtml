@@ -1,0 +1,11 @@
+﻿<div class="row">
+    <div class="col-md-2" ng-controller="LeftPanelCtrl">
+        <ul class="nav nav-pills nav-stacked" role="tablist" ng-repeat="page in pages">
+            <li ng-class="{active: isActive(page.pageUrl)}"><a href="/#/{{ page.pageUrl }}/list">{{ page.title }}</a></li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <div class="panel-body" ng-view></div>
+    </div>
+    <div class="col-md-2"></div>
+</div>

@@ -31,11 +31,18 @@ namespace Remont.DAL
             }
         }
 
-        public IList<TItem> Get(PageInfoRequest<TKey> pageInfoRequest)
+		public virtual IList<TItem> Get(PageInfoRequest<TKey> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
         {
             const int pageSize = 5;
 
-            pageInfoRequest.TotalItems = _db.Set<TItem>().Count();
+			var query = _db.Set<TItem>().Where(item => !item.IsDeleted);
+
+			if (filter != null)
+			{
+				query = filter(query);
+			}
+
+			pageInfoRequest.TotalItems = query.Count();
             pageInfoRequest.TotalPages = pageInfoRequest.TotalItems / pageSize + (pageInfoRequest.TotalItems % pageSize == 0 ? 0 : 1);
 
             if (pageInfoRequest.PageIndex < 0)
@@ -47,8 +54,7 @@ namespace Remont.DAL
                 pageInfoRequest.PageIndex = pageInfoRequest.TotalPages - 1;
             }
 
-            var query = _db.Set<TItem>()
-                .OrderBy(item => item.Id)
+			query = query.OrderBy(item => item.Id)
                 .Skip(pageInfoRequest.PageIndex * pageSize)
                 .Take(pageSize);
 

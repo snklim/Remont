@@ -1,17 +1,27 @@
-﻿
+﻿@using Remont.Common.Model
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-<div class="row">
-    <div class="col-md-2" ng-controller="LeftPanelCtrl">
-        <ul class="nav nav-pills nav-stacked" role="tablist" ng-repeat="page in pages">
-            <li ng-class="{active: isActive(page.name)}"><a href="/#/{{ page.name }}/list">{{ page.title }}</a></li>
-        </ul>
-    </div>
-    <div class="col-md-8">
-        <div class="panel-body" ng-view></div>
-    </div>
-    <div class="col-md-2"></div>
-</div>
+@{ Html.RenderPartial("_LeftPanel"); }
+
+@section PagesDefinition{
+    <script>
+    window.pages = [
+        //{ pageUrl: 'customer', ctrlName: 'Generic', title: 'Customer', serviceUrl: '/api/generic', tableId: 1 }
+    ];
+
+    @foreach (Table table in ViewBag.Tables)
+        {
+            <text>window.pages.push({
+        pageUrl: '@table.TableName.ToLowerInvariant()',
+        ctrlName: 'Generic',
+        title: '@table.TableName',
+        serviceUrl: '/api/generic',
+        tableId: @table.Id
+            })</text>
+        }
+    </script>
+}

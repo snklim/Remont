@@ -2,6 +2,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
+                <th>Id</th>
                 <th ng-repeat="column in columns">{{ column.ColumnName }}</th>
                 <th>
                     <div style="float: right">
@@ -12,6 +13,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="row in items">
+                <td>{{ row.Id }}</td>
                 <td ng-repeat="cell in row.Cells">{{ cell.Value }}</td>
                 <td>
                     <div style="float: right">
