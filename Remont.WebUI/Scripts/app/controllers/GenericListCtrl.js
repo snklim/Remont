@@ -1,19 +1,9 @@
 ﻿(function() {
     angular.module('remontApp').controller('GenericListCtrl', function ($location, $scope, baseListCtrl, response, extData) {
 
-        $scope.rows = response.Bag;
-
-        $scope.item = response.Items[0];
-
-        baseListCtrl.create($scope, response, extData.pageUrl, extData.serviceUrl);
+        $scope.columns = response.Bag;
         
-        $scope.paginationVisible = function() {
-            return response.PageInfoRequest.TotalPages.length > 0;
-        };
-
-        $scope.getCellValue = function(cell, index) {
-            return cell[index].Value;
-        };
+        baseListCtrl.create($scope, response, extData.pageUrl, extData.serviceUrl, extData.tableId);
 
     });
 })();

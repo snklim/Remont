@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
+using Remont.Common;
 using Remont.Common.Model;
 using Remont.DAL;
 using Remont.WebUI.Controllers.Api;

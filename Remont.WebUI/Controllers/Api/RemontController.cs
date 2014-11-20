@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Http;
 using System.Web.UI;
+using Remont.Common;
 using Remont.Common.Model;
 using Remont.Common.Repository;
 
@@ -20,15 +21,7 @@ namespace Remont.WebUI.Controllers.Api
         {
             if (pageInfoRequest.Id.Equals(default(TKey)))
             {
-                int totalItems;
-                int totalPages;
-                int pageIndexOut;
-
-                var items = _repository.Get(pageInfoRequest.PageIndex, out totalItems, out totalPages, out pageIndexOut);
-
-                pageInfoRequest.TotalItems = totalItems;
-                pageInfoRequest.TotalPages = totalPages;
-                pageInfoRequest.PageIndex = pageIndexOut;
+                var items = _repository.Get(pageInfoRequest);
 
                 return new Response<TItem, TKey>
                 {

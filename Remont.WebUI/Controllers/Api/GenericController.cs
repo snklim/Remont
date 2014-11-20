@@ -5,18 +5,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Practices.ObjectBuilder2;
+using Remont.Common;
 using Remont.Common.Model;
 using Remont.Common.Repository;
 
 namespace Remont.WebUI.Controllers.Api
 {
-    public class TableData
-    {
-        public int TableId { get; set; }
-
-        public Row Row { get; set; }
-    }
-
     public class GenericController : ApiController
     {
         private readonly IRepository<Table, int> _tableRepository;
@@ -34,9 +28,12 @@ namespace Remont.WebUI.Controllers.Api
 	        _cellRepository = cellRepository;
         }
 
-        [Route("api/generic/{tableId:int}/{rowId:int?}")]
-		public Response<Table, int> Get(int tableId, int rowId = -1)
+        //[Route("api/generic/{tableId:int}/{rowId:int?}")]
+        public Response<Row, int> Get([FromUri]PageInfoRequest<int> pageInfoRequest)
         {
+            var tableId = pageInfoRequest.TableId;
+            var rowId = -1;//pageInfoRequest.RowId;
+
             var table = _tableRepository.Find(tableId);
 
             if (table == null)
@@ -46,50 +43,49 @@ namespace Remont.WebUI.Controllers.Api
 
 			table.Columns = _columnRepository.GetAll(items => items.Where(item => item.TableId == tableId));
 
-	        if (rowId == -1)
-	        {
-		        table.Rows = _rowRepository.GetAll(items => items.Where(item => item.TableId == tableId));
-		        table.Rows.ForEach(r => r.Cells = _cellRepository.GetAll(items => items.Where(item => item.RowId == r.Id)));
-	        }
-            else if (rowId > 0)
-            {
-                table.Rows = _rowRepository.GetAll(items => items.Where(item => item.Id == rowId));
-                table.Rows.ForEach(r => r.Cells = _cellRepository
-                    .GetAll(items => items.Where(item => item.RowId == r.Id))
-                    .Select(c =>
-                    {
-                        c.Column = _columnRepository.GetAll(items => items.Where(item => item.Id == c.ColumnId)).FirstOrDefault();
-                        return c;
-                    }));
-            }
-			else if (rowId == 0)
-			{
-				table.Rows = new[]
-				{
-					new Row
-					{
-						TableId = tableId,
-						Cells = table.Columns.Select(c => new Cell
-						{
-							ColumnId = c.Id,
-							Column = c,
-							TableId = tableId
-						})
-					}
-				};
-			}
+            //if (rowId == -1)
+            //{
+            //    table.Rows = _rowRepository.GetAll(items => items
+            //        .Where(item => item.TableId == tableId)
+            //        /*.OrderBy(item => item.Id).Skip(5).Take(5)*/);
+            //    table.Rows.ForEach(r => r.Cells = _cellRepository.GetAll(items => items.Where(item => item.RowId == r.Id)));
+            //}
+            //else if (rowId > 0)
+            //{
+            //    table.Rows = _rowRepository.GetAll(items => items.Where(item => item.Id == rowId));
+            //    table.Rows.ForEach(r => r.Cells = _cellRepository
+            //        .GetAll(items => items.Where(item => item.RowId == r.Id))
+            //        .Select(c =>
+            //        {
+            //            c.Column = _columnRepository.GetAll(items => items.Where(item => item.Id == c.ColumnId)).FirstOrDefault();
+            //            return c;
+            //        }));
+            //}
+            //else if (rowId == 0)
+            //{
+            //    table.Rows = new[]
+            //    {
+            //        new Row
+            //        {
+            //            TableId = tableId,
+            //            Cells = table.Columns.Select(c => new Cell
+            //            {
+            //                ColumnId = c.Id,
+            //                Column = c,
+            //                TableId = tableId
+            //            })
+            //        }
+            //    };
+            //}
 
-	        return new Response<Table, int>
+            table.Rows = _rowRepository.Get(pageInfoRequest);
+            table.Rows.ForEach(r => r.Cells = _cellRepository.GetAll(items => items.Where(item => item.RowId == r.Id)));
+
+	        return new Response<Row, int>
             {
-                Items = new[] {table},
-				Bag = table.Rows,
-                PageInfoRequest = new PageInfoRequest<int>
-                {
-                    Id = 1,
-                    PageIndex = 0,
-                    TotalItems = 1,
-                    TotalPages = 1
-                }
+				Bag = table.Columns,
+                Items = table.Rows.ToList(),
+                PageInfoRequest = pageInfoRequest
             };
         }
 

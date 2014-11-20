@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Practices.ObjectBuilder2;
+using Remont.Common;
 using Remont.Common.Model;
 using Remont.Common.Repository;
 

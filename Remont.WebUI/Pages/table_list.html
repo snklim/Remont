@@ -24,7 +24,7 @@
         </tbody>
     </table>
 </div>
-<nav ng-click="pageChange()">
+<nav ng-show="paginationVisible()" ng-click="pageChange()">
     <ul class="pagination">
         <li ng-repeat="p in pages" ng-class="{active: pageInfo.PageIndex == p.pageIndex}">
             <a data-pageindex="{{ p.pageIndex }}" href="#">{{ p.pageText }}</a>

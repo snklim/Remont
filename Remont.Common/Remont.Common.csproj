@@ -47,6 +47,7 @@
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderStatus.cs" />
     <Compile Include="Model\Table.cs" />
+    <Compile Include="PageInfoRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
   </ItemGroup>

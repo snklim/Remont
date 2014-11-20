@@ -2,7 +2,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th ng-repeat="column in item.Columns">{{ column.ColumnName }}</th>
+                <th ng-repeat="column in columns">{{ column.ColumnName }}</th>
                 <th>
                     <div style="float: right">
                         <a ng-click="edit(0)" class="glyphicon glyphicon-plus"></a>
@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="row in rows">
+            <tr ng-repeat="row in items">
                 <td ng-repeat="cell in row.Cells">{{ cell.Value }}</td>
                 <td>
                     <div style="float: right">
@@ -22,7 +22,7 @@
         </tbody>
     </table>
 </div>
-<nav ng-show="paginationVisible()" class="ng-hide" ng-click="pageChange()">
+<nav ng-show="paginationVisible()" ng-click="pageChange()">
     <ul class="pagination">
         <li ng-repeat="p in pages" ng-class="{active: pageInfo.PageIndex == p.pageIndex}">
             <a data-pageindex="{{ p.pageIndex }}" href="#">{{ p.pageText }}</a>

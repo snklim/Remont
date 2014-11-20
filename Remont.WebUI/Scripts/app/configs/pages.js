@@ -1,54 +1,84 @@
-﻿window.pages = [
-    {
-        name: 'table',
-        ctrlName: 'Table',
-        viewName: 'Table',
-        serviceUrl: '/api/table',
-        title: 'Table'
-    },
-    {
-        name: 'customer',
-        ctrlName: 'Generic',
-        viewName: 'Generic',
-        serviceUrl: '/api/generic/1',
-        title: 'Customer',
-        resolveCreate: {
-            extData: function() {
-                return {
-                    pageUrl: 'customer',
-                    serviceUrl: '/api/generic/1'
-                }
-            },
-            item: function($route, dataFeeder) {
+﻿(function () {
+
+    var itemResolvers = [
+
+        function (serviceUrl, tableId) {
+
+            return function ($route, dataFeeder) {
+
+                var id = $route && $route.current && $route.current.params && $route.current.params.id ?
+                    $route.current.params.id : 0;
+
+                var params = {
+                    tableId: tableId,
+                    id: id
+                };
+
                 return dataFeeder
-                    .create('/api/generic/1/0')
-                    .get($route.current.params, function(data) {
-                        return data.Items[0].Rows[0];
+                    .create(serviceUrl)
+                    .get(params, function(data) {
+                        return data.Item;
                     });
             }
         },
-        resolveEdit: {
-            extData: function() {
-                return {
-                    pageUrl: 'customer',
-                    serviceUrl: '/api/generic/1'
-                }
-            },
-            item: function($route, dataFeeder) {
+
+        function (serviceUrl, tableId) {
+
+            return function ($route, dataFeeder) {
+
+                var id = $route && $route.current && $route.current.params && $route.current.params.id ?
+                    $route.current.params.id : 0;
+
+                var params = {
+                    tableId: tableId,
+                    id: id
+                };
+
                 return dataFeeder
-                    .create('/api/generic/1/' + $route.current.params.id)
-                    .get(null, function(data) {
+                    .create(serviceUrl)
+                    .get(params, function (data) {
                         return data.Items[0].Rows[0];
                     });
-            }
-        },
-        resolveList: {
-            extData: function() {
-                return {
-                    pageUrl: 'customer',
-                    serviceUrl: '/api/generic/1'
-                }
             }
         }
-    }
-];
+
+    ];
+
+    function resolver(pageUrl, ctrlName, title, serviceUrl, itemResolverId, tableId) {
+
+        var self = {
+            name: pageUrl,
+            ctrlName: ctrlName,
+            viewName: ctrlName,
+            serviceUrl: serviceUrl,
+            title: title,
+
+            resolver: {
+
+                extData: function() {
+                    return {
+                        pageUrl: pageUrl,
+                        serviceUrl: serviceUrl,
+                        tableId: tableId
+                    }
+                },
+
+                item: itemResolvers[itemResolverId](serviceUrl, tableId),
+
+                response: function (dataFeeder) {
+                    return dataFeeder.create(serviceUrl).get({
+                        tableId: tableId
+                    });
+                }
+
+            }
+        };
+
+        return self;
+    };
+
+    window.pages = [
+        new resolver('table', 'Table', 'Table', '/api/table/', 0),
+        new resolver('customer', 'Generic', 'Customer', '/api/generic', 0, 1)
+    ];
+})();

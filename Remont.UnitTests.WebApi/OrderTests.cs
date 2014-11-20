@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
+using Remont.Common;
 using Remont.Common.Model;
 using Remont.DAL;
 using Remont.WebUI.Controllers.Api;

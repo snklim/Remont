@@ -1,7 +1,9 @@
-﻿namespace Remont.WebUI.Controllers.Api
+﻿namespace Remont.Common
 {
     public class PageInfoRequest<TKey>
     {
+        public TKey TableId { get; set; }
+
         public TKey Id { get; set; }
 
         public int PageIndex { get; set; }

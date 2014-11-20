@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using Remont.Common;
 using Remont.Common.Model;
 using Remont.Common.Repository;
 
@@ -30,26 +31,25 @@ namespace Remont.DAL
             }
         }
 
-        public IList<TItem> Get(int pageIndex, out int totalItems, out int totalPages, out int pageIndexOut)
+        public IList<TItem> Get(PageInfoRequest<TKey> pageInfoRequest)
         {
             const int pageSize = 5;
 
-            totalItems = _db.Set<TItem>().Count();
-            totalPages = totalItems/pageSize + (totalItems%pageSize == 0 ? 0 : 1);
-            pageIndexOut = pageIndex;
+            pageInfoRequest.TotalItems = _db.Set<TItem>().Count();
+            pageInfoRequest.TotalPages = pageInfoRequest.TotalItems / pageSize + (pageInfoRequest.TotalItems % pageSize == 0 ? 0 : 1);
 
-            if (pageIndex < 0)
+            if (pageInfoRequest.PageIndex < 0)
             {
-                pageIndexOut = 0;
+                pageInfoRequest.PageIndex = 0;
             }
-            else if (pageIndex > 0 && pageIndex >= totalPages)
+            else if (pageInfoRequest.PageIndex > 0 && pageInfoRequest.PageIndex >= pageInfoRequest.TotalPages)
             {
-                pageIndexOut = totalPages - 1;
+                pageInfoRequest.PageIndex = pageInfoRequest.TotalPages - 1;
             }
 
             var query = _db.Set<TItem>()
                 .OrderBy(item => item.Id)
-                .Skip(pageIndexOut*pageSize)
+                .Skip(pageInfoRequest.PageIndex * pageSize)
                 .Take(pageSize);
 
             return query.ToList();

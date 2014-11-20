@@ -11,7 +11,7 @@ namespace Remont.Common.Repository
 
         void Delete(TKey itemId);
 
-        IList<TItem> Get(int pageIndex, out int totalItems, out int totalPages, out int pageIndexOut);
+        IList<TItem> Get(PageInfoRequest<TKey> pageInfoRequest);
 
         TItem Find(TKey itemId);
 

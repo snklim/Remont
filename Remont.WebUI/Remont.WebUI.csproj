@@ -131,6 +131,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\configs\filterProvider.js" />
     <Content Include="Scripts\app\configs\httpProvider.js" />
+    <Content Include="Scripts\app\configs\pages.js" />
     <Content Include="Scripts\app\configs\routeProvider.js" />
     <Content Include="Scripts\app\controllers\GenericListCtrl.js" />
     <Content Include="Scripts\app\controllers\GenericEditCtrl.js" />
@@ -237,7 +238,6 @@
     <Compile Include="Controllers\Api\GenericController.cs" />
     <Compile Include="Controllers\Api\OrderStatusController.cs" />
     <Compile Include="Controllers\Api\OrderController.cs" />
-    <Compile Include="Controllers\Api\PageInfoRequest.cs" />
     <Compile Include="Controllers\Api\RemontController.cs" />
     <Compile Include="Controllers\Api\Response.cs" />
     <Compile Include="Controllers\Api\TableController.cs" />
