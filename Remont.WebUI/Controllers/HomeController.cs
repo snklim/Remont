@@ -10,7 +10,7 @@ namespace Remont.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-	    readonly EntityRepository<Table, int> _tableRepository = new EntityRepository<Table, int>();
+	    readonly EntityRepository<Table> _tableRepository = new EntityRepository<Table>();
 
         // GET: Home
         public ActionResult Index()

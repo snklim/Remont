@@ -2,7 +2,7 @@
 
 namespace Remont.Common.Model
 {
-	public class Row : TableSpecificBaseItem<int>
+	public class Row : TableSpecificBaseItem
     {
 		public virtual Table Table { get; set; }
 

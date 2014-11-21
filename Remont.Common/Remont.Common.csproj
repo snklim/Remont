@@ -43,10 +43,7 @@
     <Compile Include="Model\Cell.cs" />
     <Compile Include="Model\Column.cs" />
     <Compile Include="Model\Control.cs" />
-    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Row.cs" />
-    <Compile Include="Model\Order.cs" />
-    <Compile Include="Model\OrderStatus.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="PageInfoRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

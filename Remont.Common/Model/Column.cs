@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Remont.Common.Model
 {
-    public class Column : TableSpecificBaseItem<int>
+    public class Column : TableSpecificBaseItem
     {
         public string ColumnName { get; set; }
 
@@ -18,6 +18,6 @@ namespace Remont.Common.Model
 
         public Table Table { get; set; }
 
-        public virtual IEnumerable<Row> Rows { get; set; }
+        public virtual ICollection<Row> Rows { get; set; }
     }
 }

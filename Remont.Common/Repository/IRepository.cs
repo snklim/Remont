@@ -5,16 +5,17 @@ using Remont.Common.Model;
 
 namespace Remont.Common.Repository
 {
-    public interface IRepository<TItem, TKey> where TItem : BaseItem<TKey>
+    public interface IRepository<TItem> where TItem : BaseItem
     {
 		TItem AddOrUpdate(TItem item);
 
-        void Delete(TKey itemId);
+        void Delete(int itemId);
 
-		IEnumerable<TItem> Get(PageInfoRequest<TKey> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
+		IEnumerable<TItem> Get(PageInfoRequest pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
 
-        TItem Find(TKey itemId);
+        TItem Find(PageInfoRequest pageInfoRequest);
 
-		IEnumerable<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
+        IQueryable<TItem> GetAll(PageInfoRequest pageInfoRequest = null,
+            Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace Remont.Common
 {
-    public class PageInfoRequest<TKey>
+    public class PageInfoRequest
     {
-        public TKey TableId { get; set; }
+        public int TableId { get; set; }
 
-        public TKey Id { get; set; }
+        public int Id { get; set; }
 
         public int PageIndex { get; set; }
 

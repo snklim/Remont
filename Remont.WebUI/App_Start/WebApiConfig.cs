@@ -17,14 +17,12 @@ namespace Remont.WebUI
             // Web API configuration and services
             var container = new UnityContainer();
 
-            container.RegisterType<IRepository<Customer, int>, EntityRepository<Customer, int>>();
-            container.RegisterType<IRepository<Order, int>, EntityRepository<Order, int>>();
-            container.RegisterType<IRepository<OrderStatus, int>, EntityRepository<OrderStatus, int>>();
-            container.RegisterType<IRepository<Table, int>, EntityRepository<Table, int>>();
-            container.RegisterType<IRepository<Column, int>, EntityRepository<Column, int>>();
-			container.RegisterType<IRepository<Row, int>, RowRepository>();
-            container.RegisterType<IRepository<Cell, int>, EntityRepository<Cell, int>>();
-            container.RegisterType<IRepository<Control, int>, EntityRepository<Control, int>>();
+            container.RegisterType<IRepository<Table>, TableRepository>();
+            container.RegisterType<IRepository<Control>, EntityRepository<Control>>();
+
+            container.RegisterType<IRepository<Column>, TableSpecificRepository<Column>>();
+            container.RegisterType<IRepository<Row>, RowRepository>();
+            container.RegisterType<IRepository<Cell>, TableSpecificRepository<Cell>>();
 
             config.DependencyResolver = new UnityResolver(container);
 

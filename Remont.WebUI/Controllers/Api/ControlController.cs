@@ -3,9 +3,9 @@ using Remont.Common.Repository;
 
 namespace Remont.WebUI.Controllers.Api
 {
-    public class ControlController : RemontController<Control, int>
+    public class ControlController : RemontController<Control>
     {
-        public ControlController(IRepository<Control, int> repository) : base(repository)
+        public ControlController(IRepository<Control> repository) : base(repository)
         {
         }
     }

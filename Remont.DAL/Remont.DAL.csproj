@@ -53,6 +53,7 @@
     <Compile Include="EntityRepository.cs" />
     <Compile Include="RemontContextInitializer.cs" />
     <Compile Include="RowRepository.cs" />
+    <Compile Include="TableRepository.cs" />
     <Compile Include="TableSpecificRepository.cs" />
   </ItemGroup>
   <ItemGroup>

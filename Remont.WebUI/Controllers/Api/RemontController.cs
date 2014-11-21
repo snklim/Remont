@@ -7,32 +7,32 @@ using Remont.Common.Repository;
 
 namespace Remont.WebUI.Controllers.Api
 {
-    public abstract class RemontController<TItem, TKey> : ApiController
-        where TItem : BaseItem<TKey>
+    public abstract class RemontController<TItem> : ApiController
+        where TItem : BaseItem
     {
-        protected readonly IRepository<TItem, TKey> Repository;
+        protected readonly IRepository<TItem> Repository;
 
-        protected RemontController(IRepository<TItem, TKey> repository)
+        protected RemontController(IRepository<TItem> repository)
         {
             Repository = repository;
         }
 
-        public virtual Response<TItem, TKey> Get([FromUri]PageInfoRequest<TKey> pageInfoRequest)
+        public virtual Response<TItem> Get([FromUri]PageInfoRequest pageInfoRequest)
         {
-            if (pageInfoRequest.Id.Equals(default(TKey)))
+            if (pageInfoRequest.Id <= 0)
             {
                 var items = Repository.Get(pageInfoRequest);
 
-                return new Response<TItem, TKey>
+                return new Response<TItem>
                 {
                     Items = items.ToList(),
                     PageInfoRequest = pageInfoRequest
                 };
             }
 
-            return new Response<TItem, TKey>
+            return new Response<TItem>
             {
-                Item = Repository.Find(pageInfoRequest.Id),
+                Item = Repository.Find(pageInfoRequest),
                 PageInfoRequest = pageInfoRequest
             };
         }
@@ -42,7 +42,7 @@ namespace Remont.WebUI.Controllers.Api
             return Repository.AddOrUpdate(item);
         }
 
-        public void Delete(TKey itemId)
+        public void Delete(int itemId)
         {
             Repository.Delete(itemId);
         }

@@ -8,12 +8,12 @@ using Remont.Common.Repository;
 
 namespace Remont.DAL
 {
-    public class EntityRepository<TItem, TKey> : IRepository<TItem, TKey>, IDisposable
-        where TItem : BaseItem<TKey>
+    public class EntityRepository<TItem> : IRepository<TItem>, IDisposable
+        where TItem : BaseItem
     {
         protected RemontContext DbContext = new RemontContext();
 
-		public TItem AddOrUpdate(TItem item)
+        protected virtual TItem InternalAddOrUpdate(TItem item)
         {
             DbContext.Set<TItem>().AddOrUpdate(item);
             DbContext.SaveChanges();
@@ -21,7 +21,14 @@ namespace Remont.DAL
             return item;
         }
 
-        public void Delete(TKey itemId)
+		public TItem AddOrUpdate(TItem item)
+		{
+		    InternalAddOrUpdate(item);
+
+            return item;
+        }
+
+        public void Delete(int itemId)
         {
             var itemDb = DbContext.Set<TItem>().Find(itemId);
             if (itemDb != null)
@@ -31,17 +38,25 @@ namespace Remont.DAL
             }
         }
 
-	    protected virtual IQueryable<TItem> InternalGet(PageInfoRequest<TKey> pageInfoRequest,
+        protected virtual IQueryable<TItem> InternalQuery(PageInfoRequest pageInfoRequest, 
+            Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
+        {
+            var query = DbContext.Set<TItem>().Where(item => !item.IsDeleted);
+
+            if (filter != null)
+            {
+                query = filter(query);
+            }
+
+            return query;
+        }
+
+	    private IEnumerable<TItem> InternalGet(PageInfoRequest pageInfoRequest,
 		    Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
 	    {
 		    const int pageSize = 5;
 
-		    var query = DbContext.Set<TItem>().Where(item => !item.IsDeleted);
-
-		    if (filter != null)
-		    {
-			    query = filter(query);
-		    }
+            var query = InternalQuery(pageInfoRequest, filter);
 
 		    pageInfoRequest.TotalItems = query.Count();
 		    pageInfoRequest.TotalPages = pageInfoRequest.TotalItems/pageSize +
@@ -63,21 +78,26 @@ namespace Remont.DAL
 		    return query;
 	    }
 
-	    public IEnumerable<TItem> Get(PageInfoRequest<TKey> pageInfoRequest,
+	    public IEnumerable<TItem> Get(PageInfoRequest pageInfoRequest,
 		    Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
 	    {
 		    return InternalGet(pageInfoRequest, filter).ToList();
 	    }
 
-        public TItem Find(TKey itemId)
+        protected virtual TItem InternalFind(PageInfoRequest pageInfoRequest)
         {
-            return DbContext.Set<TItem>().Find(itemId);
+            return InternalQuery(pageInfoRequest).FirstOrDefault(item => item.Id == pageInfoRequest.Id);
         }
 
-        public IEnumerable<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
+        public TItem Find(PageInfoRequest pageInfoRequest)
         {
-            var query = DbContext.Set<TItem>().Where(item => !item.IsDeleted);
-            return filter != null ? filter(query).ToList() : query.ToList();
+            return InternalFind(pageInfoRequest);
+        }
+
+        public IQueryable<TItem> GetAll(PageInfoRequest pageInfoRequest = null, 
+            Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
+        {
+            return InternalQuery(pageInfoRequest, filter);
         }
 
         public void Dispose()

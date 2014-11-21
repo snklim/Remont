@@ -236,10 +236,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\ControlController.cs" />
-    <Compile Include="Controllers\Api\CustomerController.cs" />
     <Compile Include="Controllers\Api\GenericController.cs" />
-    <Compile Include="Controllers\Api\OrderStatusController.cs" />
-    <Compile Include="Controllers\Api\OrderController.cs" />
     <Compile Include="Controllers\Api\RemontController.cs" />
     <Compile Include="Controllers\Api\Response.cs" />
     <Compile Include="Controllers\Api\TableController.cs" />

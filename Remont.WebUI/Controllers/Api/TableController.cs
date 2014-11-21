@@ -4,46 +4,18 @@ using Microsoft.Practices.ObjectBuilder2;
 using Remont.Common;
 using Remont.Common.Model;
 using Remont.Common.Repository;
+using Remont.DAL;
 
 namespace Remont.WebUI.Controllers.Api
 {
-    public class TableController : RemontController<Table, int>
+    public class TableController : RemontController<Table>
     {
-        private readonly IRepository<Column, int> _columnRepository;
+        private readonly EntityRepository<Column> _columnRepository;
 
-        public TableController(IRepository<Table, int> tableTepository, IRepository<Column, int> columnRepository)
+        public TableController(IRepository<Table> tableTepository, EntityRepository<Column> columnRepository)
             : base(tableTepository)
         {
             _columnRepository = columnRepository;
-        }
-
-		public override Table Post(Table item)
-        {
-			item = base.Post(item);
-            
-            if (item.Columns != null)
-            {
-                item.Columns.ForEach(c =>
-                {
-                    c.TableId = item.Id;
-                    c.Id = _columnRepository.AddOrUpdate(c).Id;
-                });
-            }
-
-			return item;
-        }
-
-        public override Response<Table, int> Get([FromUri]PageInfoRequest<int> pageInfoRequest)
-        {
-            var response = base.Get(pageInfoRequest);
-
-            if (response.Item != null)
-            {
-                response.Item.Columns =
-                    _columnRepository.GetAll(query => query.Where(c => c.TableId == response.Item.Id));
-            }
-
-            return response;
         }
     }
 }
