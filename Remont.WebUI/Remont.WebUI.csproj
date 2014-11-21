@@ -144,6 +144,7 @@
     <Content Include="Scripts\app\services\baseEditCtrl.js" />
     <Content Include="Scripts\app\services\baseListCtrl.js" />
     <Content Include="Scripts\app\services\dataFeeder.js" />
+    <Content Include="Scripts\app\configs\pageResolver.js" />
     <Content Include="Scripts\app\services\pageService.js" />
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\bootstrap.js" />

@@ -37,36 +37,36 @@ namespace Remont.WebUI.Controllers.Api
 
 			table.Columns = _columnRepository.GetAll(items => items.Where(item => item.TableId == tableId));
 
-            table.Rows = Repository.Get(pageInfoRequest);
-	        table.Rows.ForEach(
-		        r => r.Cells = _cellRepository
-			        .GetAll(items => items.Where(item => item.TableId == table.Id && item.RowId == r.Id)));
+	        table.Rows = Repository.Get(pageInfoRequest);
 
-	        var row = new Row
-	        {
-				TableId = tableId,
-				Cells = table.Columns.Select(column => new Cell
-				{
-					Column = column,
-					ColumnId = column.Id,
-					TableId = tableId
-				})
-	        };
+			if (table.Rows == null)
+			{
+				throw new HttpResponseException(HttpStatusCode.NotFound);
+			}
+
+			Row row;
 
 	        if (pageInfoRequest.Id > 0)
 	        {
-                row = Repository.Find(pageInfoRequest.Id);
+		        row = Repository.Find(pageInfoRequest.Id);
 
 		        if (row == null)
 		        {
-					throw new HttpResponseException(HttpStatusCode.NotFound);
+			        throw new HttpResponseException(HttpStatusCode.NotFound);
 		        }
-
-		        row.Cells = _cellRepository.GetAll(items => items.Where(item => item.RowId == row.Id)).Select(item =>
-		        {
-			        item.Column = _columnRepository.Find(item.ColumnId);
-			        return item;
-		        });
+	        }
+	        else
+	        {
+				row = new Row
+				{
+					TableId = tableId,
+					Cells = table.Columns.Select(column => new Cell
+					{
+						Column = column,
+						ColumnId = column.Id,
+						TableId = tableId
+					}).ToList()
+				};
 	        }
 
 	        return new Response<Row, int>

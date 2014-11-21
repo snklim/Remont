@@ -11,10 +11,10 @@ namespace Remont.Common.Repository
 
         void Delete(TKey itemId);
 
-		IList<TItem> Get(PageInfoRequest<TKey> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
+		IEnumerable<TItem> Get(PageInfoRequest<TKey> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
 
         TItem Find(TKey itemId);
 
-        IList<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
+		IEnumerable<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
     }
 }

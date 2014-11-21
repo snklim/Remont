@@ -25,7 +25,7 @@ namespace Remont.WebUI.Controllers.Api
 
                 return new Response<TItem, TKey>
                 {
-                    Items = items,
+                    Items = items.ToList(),
                     PageInfoRequest = pageInfoRequest
                 };
             }

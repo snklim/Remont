@@ -3,16 +3,16 @@ namespace Remont.Common.Model
 {
 	public class Cell : TableSpecificBaseItem<int>
 	{
-		public Row Row { get; set; }
+		public virtual Row Row { get; set; }
 
-		public int RowId { get; set; }
+		public virtual int RowId { get; set; }
 
-		public Column Column { get; set; }
+		public virtual Column Column { get; set; }
 
-		public int ColumnId { get; set; }
+		public virtual int ColumnId { get; set; }
 
-		public Table Table { get; set; }
+		public virtual Table Table { get; set; }
 
-		public string Value { get; set; }
+		public virtual string Value { get; set; }
 	}
 }

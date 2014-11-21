@@ -9,15 +9,15 @@ namespace Remont.DAL
 	public class TableSpecificRepository<TItem> : EntityRepository<TItem, int>
 		where TItem : TableSpecificBaseItem<int>
 	{
-		public override IList<TItem> Get(PageInfoRequest<int> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
+		protected override IQueryable<TItem> InternalGet(PageInfoRequest<int> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
 		{
 			var baseFilter = new Func<IQueryable<TItem>, IQueryable<TItem>>(
 				items => items.Where(item => item.TableId == pageInfoRequest.TableId));
 
 			if (filter == null)
-				return base.Get(pageInfoRequest, baseFilter);
+				return base.InternalGet(pageInfoRequest, baseFilter);
 
-			return base.Get(pageInfoRequest, items => filter(baseFilter(items)));
+			return base.InternalGet(pageInfoRequest, items => filter(baseFilter(items)));
 		}
 	}
 }

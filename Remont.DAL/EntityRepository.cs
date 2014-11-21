@@ -11,73 +11,81 @@ namespace Remont.DAL
     public class EntityRepository<TItem, TKey> : IRepository<TItem, TKey>, IDisposable
         where TItem : BaseItem<TKey>
     {
-        private RemontContext _db = new RemontContext();
+        protected RemontContext DbContext = new RemontContext();
 
 		public TItem AddOrUpdate(TItem item)
         {
-            _db.Set<TItem>().AddOrUpdate(item);
-            _db.SaveChanges();
+            DbContext.Set<TItem>().AddOrUpdate(item);
+            DbContext.SaveChanges();
 
             return item;
         }
 
         public void Delete(TKey itemId)
         {
-            var itemDb = _db.Set<TItem>().Find(itemId);
+            var itemDb = DbContext.Set<TItem>().Find(itemId);
             if (itemDb != null)
             {
-                _db.Set<TItem>().Remove(itemDb);
-                _db.SaveChanges();
+                DbContext.Set<TItem>().Remove(itemDb);
+                DbContext.SaveChanges();
             }
         }
 
-		public virtual IList<TItem> Get(PageInfoRequest<TKey> pageInfoRequest, Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
-        {
-            const int pageSize = 5;
+	    protected virtual IQueryable<TItem> InternalGet(PageInfoRequest<TKey> pageInfoRequest,
+		    Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
+	    {
+		    const int pageSize = 5;
 
-			var query = _db.Set<TItem>().Where(item => !item.IsDeleted);
+		    var query = DbContext.Set<TItem>().Where(item => !item.IsDeleted);
 
-			if (filter != null)
-			{
-				query = filter(query);
-			}
+		    if (filter != null)
+		    {
+			    query = filter(query);
+		    }
 
-			pageInfoRequest.TotalItems = query.Count();
-            pageInfoRequest.TotalPages = pageInfoRequest.TotalItems / pageSize + (pageInfoRequest.TotalItems % pageSize == 0 ? 0 : 1);
+		    pageInfoRequest.TotalItems = query.Count();
+		    pageInfoRequest.TotalPages = pageInfoRequest.TotalItems/pageSize +
+		                                 (pageInfoRequest.TotalItems%pageSize == 0 ? 0 : 1);
 
-            if (pageInfoRequest.PageIndex < 0)
-            {
-                pageInfoRequest.PageIndex = 0;
-            }
-            else if (pageInfoRequest.PageIndex > 0 && pageInfoRequest.PageIndex >= pageInfoRequest.TotalPages)
-            {
-                pageInfoRequest.PageIndex = pageInfoRequest.TotalPages - 1;
-            }
+		    if (pageInfoRequest.PageIndex < 0)
+		    {
+			    pageInfoRequest.PageIndex = 0;
+		    }
+		    else if (pageInfoRequest.PageIndex > 0 && pageInfoRequest.PageIndex >= pageInfoRequest.TotalPages)
+		    {
+			    pageInfoRequest.PageIndex = pageInfoRequest.TotalPages - 1;
+		    }
 
-			query = query.OrderBy(item => item.Id)
-                .Skip(pageInfoRequest.PageIndex * pageSize)
-                .Take(pageSize);
+		    query = query.OrderBy(item => item.Id)
+			    .Skip(pageInfoRequest.PageIndex*pageSize)
+			    .Take(pageSize);
 
-            return query.ToList();
-        }
+		    return query;
+	    }
+
+	    public IEnumerable<TItem> Get(PageInfoRequest<TKey> pageInfoRequest,
+		    Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
+	    {
+		    return InternalGet(pageInfoRequest, filter).ToList();
+	    }
 
         public TItem Find(TKey itemId)
         {
-            return _db.Set<TItem>().Find(itemId);
+            return DbContext.Set<TItem>().Find(itemId);
         }
 
-        public IList<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
+        public IEnumerable<TItem> GetAll(Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
         {
-            var query = _db.Set<TItem>().Where(item => !item.IsDeleted);
+            var query = DbContext.Set<TItem>().Where(item => !item.IsDeleted);
             return filter != null ? filter(query).ToList() : query.ToList();
         }
 
         public void Dispose()
         {
-            if (_db != null)
+            if (DbContext != null)
             {
-                _db.Dispose();
-                _db = null;
+                DbContext.Dispose();
+                DbContext = null;
             }
         }
     }
