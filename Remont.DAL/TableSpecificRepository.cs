@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Remont.Common;
 using Remont.Common.Model;
 
 namespace Remont.DAL
 {
-	public class TableSpecificRepository<TItem> : EntityRepository<TItem>
+    public class TableSpecificRepository<TItem> : EntityRepository<TItem>
 		where TItem : TableSpecificBaseItem
 	{
         protected override IQueryable<TItem> InternalQuery(PageInfoRequest pageInfoRequest, 

@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http;
-using System.Web.UI;
 using Remont.Common;
 using Remont.Common.Model;
 using Remont.Common.Repository;
@@ -17,27 +17,25 @@ namespace Remont.WebUI.Controllers.Api
             Repository = repository;
         }
 
-        public virtual Response<TItem> Get([FromUri]PageInfoRequest pageInfoRequest)
+        public virtual Response<TItem> Get([FromUri] PageInfoRequest pageInfoRequest)
         {
-            if (pageInfoRequest.Id <= 0)
+            if ("item".Equals(pageInfoRequest.Action, StringComparison.OrdinalIgnoreCase))
             {
-                var items = Repository.Get(pageInfoRequest);
-
                 return new Response<TItem>
                 {
-                    Items = items.ToList(),
+                    Item = Repository.Find(pageInfoRequest),
                     PageInfoRequest = pageInfoRequest
                 };
             }
 
             return new Response<TItem>
             {
-                Item = Repository.Find(pageInfoRequest),
+                Items = Repository.Get(pageInfoRequest).ToList(),
                 PageInfoRequest = pageInfoRequest
             };
         }
 
-		public virtual TItem Post(TItem item)
+        public virtual TItem Post(TItem item)
         {
             return Repository.AddOrUpdate(item);
         }

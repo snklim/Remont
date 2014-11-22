@@ -22,7 +22,7 @@ namespace Remont.WebUI
 
             container.RegisterType<IRepository<Column>, TableSpecificRepository<Column>>();
             container.RegisterType<IRepository<Row>, RowRepository>();
-            container.RegisterType<IRepository<Cell>, TableSpecificRepository<Cell>>();
+            container.RegisterType<IRepository<Cell>, CellRepocitory>();
 
             config.DependencyResolver = new UnityResolver(container);
 

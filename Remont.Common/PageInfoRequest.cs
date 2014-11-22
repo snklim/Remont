@@ -11,5 +11,7 @@
         public int TotalItems { get; set; }
 
         public int TotalPages { get; set; }
+
+        public string Action { get; set; }
     }
 }

@@ -26,7 +26,7 @@
         };
 
         var resolverEditBase = {
-            item: function($route, dataFeeder) {
+            response: function ($route, dataFeeder) {
 
                 var id = $route && $route.current && $route.current.params && $route.current.params.id ?
                     $route.current.params.id : 0;
@@ -37,14 +37,13 @@
 
                 var params = {
                     tableId: tableId,
-                    id: id
+                    id: id,
+                    action: 'item'
                 };
 
                 return dataFeeder
                     .create(serviceUrl)
-                    .get(params, function(data) {
-                        return data.Item;
-                    });
+                    .get(params);
             },
         };
 

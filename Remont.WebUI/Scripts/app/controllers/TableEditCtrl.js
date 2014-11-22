@@ -1,5 +1,7 @@
 ﻿(function() {
-    angular.module('remontApp').controller('TableEditCtrl', function ($scope, item, baseEditCtrl, controls) {
+    angular.module('remontApp').controller('TableEditCtrl', function ($scope, response, baseEditCtrl, controls) {
+
+        var item = response.Item;
 
         $scope.controls = controls;
 

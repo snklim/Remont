@@ -12,7 +12,11 @@ namespace Remont.DAL
         {
             var query = base.InternalQuery(pageInfoRequest, filter);
 
-            query = query.Include(row => row.Cells);
+            //query = query.Include(row => row.Cells);
+
+            //query = from row in query
+            //    join cell in DbContext.Set<Cell>() on row.Id equals cell.RowId
+            //    select row;
 
             return query;
         }
