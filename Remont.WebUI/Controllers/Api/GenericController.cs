@@ -72,5 +72,14 @@ namespace Remont.WebUI.Controllers.Api
 
             return response;
         }
+
+        public override Row Post(Row item)
+        {
+            item = base.Post(item);
+
+            item.Cells.ForEach(c => _cellRepository.AddOrUpdate(c));
+
+            return item;
+        }
     }
 }
