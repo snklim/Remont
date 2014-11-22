@@ -32,7 +32,9 @@
                     $route.current.params.id : 0;
 
                 if (tableId < 0 && id == 0) {
-                    return {};
+                    return {
+                        Item:{}
+                    };
                 }
 
                 var params = {
