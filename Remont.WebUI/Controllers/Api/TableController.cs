@@ -5,6 +5,7 @@ using Remont.Common;
 using Remont.Common.Model;
 using Remont.Common.Repository;
 using Remont.DAL;
+using Remont.DAL.Repositories;
 
 namespace Remont.WebUI.Controllers.Api
 {

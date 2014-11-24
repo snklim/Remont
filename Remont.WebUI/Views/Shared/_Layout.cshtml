@@ -33,10 +33,12 @@
     <script src="~/Scripts/app/controllers/OrderListCtrl.js"></script>
     <script src="~/Scripts/app/controllers/TableListCtrl.js"></script>
     <script src="~/Scripts/app/controllers/TableEditCtrl.js"></script>
-    <script src="~/Scripts/app/controllers/LeftPanelCtrl.js"></script>
+    <script src="~/Scripts/app/controllers/MainViewCtrl.js"></script>
     
     <script src="~/Scripts/app/controllers/GenericListCtrl.js"></script>
     <script src="~/Scripts/app/controllers/GenericEditCtrl.js"></script>
+    
+    <script src="~/Scripts/app/directive/controlType.js"></script>
 
 </head>
 <body>
@@ -72,5 +74,7 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    
+    @{ Html.RenderPartial("_PeoplePicker"); }
 </body>
 </html>

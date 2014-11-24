@@ -14,5 +14,9 @@
             });
         };
 
+        $scope.beginPeopleSelect = function(item) {
+            $('#PeoplePickerModal').modal('toggle');
+        }
+
     });
 })();

@@ -114,6 +114,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Pages\Controls\control-text.html" />
     <Content Include="Pages\generic_list.html" />
     <Content Include="Pages\generic_edit.html" />
     <Content Include="Pages\table_edit.html" />
@@ -140,7 +141,8 @@
     <Content Include="Scripts\app\controllers\TableListCtrl.js" />
     <Content Include="Scripts\app\controllers\OrderListCtrl.js" />
     <Content Include="Scripts\app\controllers\CustomerListCtrl.js" />
-    <Content Include="Scripts\app\controllers\LeftPanelCtrl.js" />
+    <Content Include="Scripts\app\controllers\MainViewCtrl.js" />
+    <Content Include="Scripts\app\directive\controlType.js" />
     <Content Include="Scripts\app\services\baseEditCtrl.js" />
     <Content Include="Scripts\app\services\baseListCtrl.js" />
     <Content Include="Scripts\app\services\dataFeeder.js" />
@@ -259,7 +261,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Shared\_LeftPanel.cshtml" />
+    <Content Include="Views\Shared\_MainView.cshtml" />
+    <Content Include="Views\Shared\_PeoplePicker.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

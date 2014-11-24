@@ -3,9 +3,9 @@ using System.Linq;
 using Remont.Common;
 using Remont.Common.Model;
 
-namespace Remont.DAL
+namespace Remont.DAL.Repositories
 {
-    public class TableRepository : EntityRepository<Table>
+	public class TableRepository : EntityRepository<Table>
     {
         protected override Table InternalFind(PageInfoRequest pageInfoRequest)
         {

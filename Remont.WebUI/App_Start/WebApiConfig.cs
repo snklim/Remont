@@ -6,6 +6,7 @@ using Microsoft.Practices.Unity;
 using Remont.Common.Model;
 using Remont.Common.Repository;
 using Remont.DAL;
+using Remont.DAL.Repositories;
 using Remont.WebUI.Infrastructure;
 
 namespace Remont.WebUI
@@ -20,9 +21,9 @@ namespace Remont.WebUI
             container.RegisterType<IRepository<Table>, TableRepository>();
             container.RegisterType<IRepository<Control>, EntityRepository<Control>>();
 
-            container.RegisterType<IRepository<Column>, TableSpecificRepository<Column>>();
+            container.RegisterType<IRepository<Column>, ColumnRepository>();
             container.RegisterType<IRepository<Row>, RowRepository>();
-            container.RegisterType<IRepository<Cell>, CellRepocitory>();
+            container.RegisterType<IRepository<Cell>, CellRepository>();
 
             config.DependencyResolver = new UnityResolver(container);
 

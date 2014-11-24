@@ -4,9 +4,9 @@ using System.Linq;
 using Remont.Common;
 using Remont.Common.Model;
 
-namespace Remont.DAL
+namespace Remont.DAL.Repositories
 {
-    public class CellRepocitory : TableSpecificRepository<Cell>
+    public class CellRepository : TableSpecificRepository<Cell>
     {
         protected override IQueryable<Cell> InternalQuery(PageInfoRequest pageInfoRequest,
             Func<IQueryable<Cell>, IQueryable<Cell>> filter = null)

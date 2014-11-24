@@ -6,7 +6,7 @@ using Remont.Common;
 using Remont.Common.Model;
 using Remont.Common.Repository;
 
-namespace Remont.DAL
+namespace Remont.DAL.Repositories
 {
     public class EntityRepository<TItem> : IRepository<TItem>, IDisposable
         where TItem : BaseItem

@@ -22,6 +22,11 @@ namespace Remont.DAL
                 ControlId = "SELECT"
             });
 
+			context.Controls.Add(new Control
+			{
+				ControlId = "PEOPLE_PICKER"
+			});
+
             base.Seed(context);
         }
     }

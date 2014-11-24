@@ -1,10 +1,9 @@
 using System;
-using System.Data.Entity;
 using System.Linq;
 using Remont.Common;
 using Remont.Common.Model;
 
-namespace Remont.DAL
+namespace Remont.DAL.Repositories
 {
     public class RowRepository : TableSpecificRepository<Row>
     {
