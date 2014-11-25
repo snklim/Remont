@@ -38,8 +38,11 @@
         };
 
         $scope.beginEntitySelect = function (cell, cilumnIndex) {
-            console.log(cilumnIndex, cell);
-            $('#PeoplePickerModal').modal('toggle');
+            //console.log(cilumnIndex, cell, $scope.columns[cilumnIndex]);
+
+            $scope.DataSourceTableId = $scope.columns[cilumnIndex].DataSourceTableId;
+
+            $('#EntityPickerModal').modal('toggle');
         }
 
     });
