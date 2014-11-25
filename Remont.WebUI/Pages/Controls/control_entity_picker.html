@@ -2,6 +2,6 @@
     <input ng-model="item.Cells[$index].Value" class="form-control" id="exampleInputEmail1"
            placeholder="Enter {{ column.ColumnName }}" />
     <span class="input-group-addon">
-        <a class="glyphicon glyphicon-search" ng-click="beginPeopleSelect(item)"></a>
+        <a class="glyphicon glyphicon-search" ng-click="beginEntitySelect(item.Cells[$index], $index)"></a>
     </span>
 </div>

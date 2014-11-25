@@ -37,7 +37,8 @@
             });
         };
 
-        $scope.beginPeopleSelect = function() {
+        $scope.beginEntitySelect = function (cell, cilumnIndex) {
+            console.log(cilumnIndex, cell);
             $('#PeoplePickerModal').modal('toggle');
         }
 

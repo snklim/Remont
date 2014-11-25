@@ -21,7 +21,7 @@ namespace Remont.DAL.Repositories
 		        select cell2;
 
 			query = query.Include(cell => cell.Column);
-			query = query.Include(cell => cell.CellDataSource);
+			query = query.Include(cell => cell.DataSourceCell);
 
             return query;
         }

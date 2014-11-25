@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using Remont.Common.Model;
 
 namespace Remont.DAL
@@ -24,7 +19,7 @@ namespace Remont.DAL
 
 			context.Controls.Add(new Control
 			{
-				ControlId = "PEOPLE_PICKER"
+				ControlId = "ENTITY_PICKER"
 			});
 
             base.Seed(context);

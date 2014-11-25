@@ -114,7 +114,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
-    <Content Include="Pages\Controls\control_people_picker.html" />
+    <Content Include="Pages\Controls\control_entity_picker.html" />
     <Content Include="Pages\Controls\control_select.html" />
     <Content Include="Pages\Controls\control_text.html" />
     <Content Include="Pages\generic_list.html" />
@@ -265,7 +265,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_MainView.cshtml" />
-    <Content Include="Views\Shared\_PeoplePicker.cshtml" />
+    <Content Include="Views\Shared\_EntityPicker.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

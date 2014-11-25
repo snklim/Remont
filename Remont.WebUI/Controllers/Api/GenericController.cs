@@ -38,7 +38,7 @@ namespace Remont.WebUI.Controllers.Api
 			            ? new Cell
 			            {
 				            Id = c.Id,
-				            Value = c.CellDataSource != null ? c.CellDataSource.Value : c.Value
+				            Value = c.DataSourceCell != null ? c.DataSourceCell.Value : c.Value
 			            }
 			            : new Cell())));
             }
@@ -54,7 +54,8 @@ namespace Remont.WebUI.Controllers.Api
                             {
                                 Id = c.Id,
                                 ColumnId = c.ColumnId,
-								CellDataSourceId = c.CellDataSourceId,
+								DataSourceCellId = c.DataSourceCellId,
+								DataSourceRowId = c.DataSourceRowId,
                                 TableId = pageInfoRequest.TableId,
                                 Value = c.Value
                             }

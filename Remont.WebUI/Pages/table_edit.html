@@ -39,6 +39,22 @@
 
                     </div>
                 </div>
+                
+                <div class="panel panel-default" ng-show="column.ControlId == 3">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Data Source</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            <label>Table</label>
+                            <select class="form-control" ng-model="column.DataSourceTableId"
+                                    ng-options="table.Id as table.TableName for table in dataSourceTables"
+                                    ng-change="onDataSourceTableChanged($index, column.DataSourceTableId)"></select>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
             
