@@ -9,12 +9,12 @@ using Remont.DAL.Repositories;
 
 namespace Remont.WebUI.Controllers.Api
 {
-    public class TableController : RemontController<Table>
+	public class TableController : RemontController<Table, PageInfoRequest>
     {
         private readonly EntityRepository<Column> _columnRepository;
 
-        public TableController(IRepository<Table> tableTepository, EntityRepository<Column> columnRepository)
-            : base(tableTepository)
+        public TableController(IRepository<Table> tableRepository, EntityRepository<Column> columnRepository)
+            : base(tableRepository)
         {
             _columnRepository = columnRepository;
         }

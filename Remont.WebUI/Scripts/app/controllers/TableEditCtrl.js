@@ -1,10 +1,11 @@
 ﻿(function() {
-    angular.module('remontApp').controller('TableEditCtrl', function ($scope, response, baseEditCtrl, controls) {
+    angular.module('remontApp').controller('TableEditCtrl', function ($scope, response, baseEditCtrl, controls, dataSourceTables, dataFeeder) {
 
         var item = response.Item;
 
         $scope.controls = controls;
-
+        $scope.dataSourceTables = dataSourceTables;
+        
         if (!item.Columns) {
             item.Columns = [];
         }
@@ -41,6 +42,32 @@
                 item.Columns.push(column);
             });
         };
+
+        $scope.dataSourceTableColumnsPerColumn = [];
+
+        var tableFeeder = dataFeeder.create('api/table');
+        $scope.onDataSourceTableChanged = function (columnIndex, tableId) {
+
+            if (!$scope.dataSourceTableColumnsPerColumn[columnIndex]) {
+                $scope.dataSourceTableColumnsPerColumn[columnIndex] = [];
+            }
+
+            tableFeeder.get({ id: tableId, action: 'item' }).then(function (data) {
+                
+                var columns = $scope.dataSourceTableColumnsPerColumn[columnIndex];
+                columns.splice(0, columns.length);
+                data.Item.Columns.forEach(function(column) {
+                    columns.push(column);
+                });
+
+            });
+        };
+
+        item.Columns.forEach(function (column, columnIndex) {
+            if (column.DataSourceTableId) {
+                $scope.onDataSourceTableChanged(columnIndex, column.DataSourceTableId);
+            }
+        });
 
     });
 })();

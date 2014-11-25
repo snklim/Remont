@@ -7,7 +7,7 @@ using Remont.Common.Repository;
 
 namespace Remont.WebUI.Controllers.Api
 {
-    public class GenericController : RemontController<Row>
+	public class GenericController : RemontController<Row, PageInfoRequest>
     {
         private readonly IRepository<Column> _columnRepository;
         private readonly IRepository<Cell> _cellRepository;

@@ -15,6 +15,11 @@
                         return dataFeeder.create('/api/control').get(null, function(data) {
                             return data.Items;
                         });
+                    },
+                    dataSourceTables: function (dataFeeder) {
+                        return dataFeeder.create('/api/table').get(null, function (data) {
+                            return data.Items;
+                        });
                     }
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 using Remont.Common;
 using Remont.Common.Model;
@@ -7,8 +8,9 @@ using Remont.Common.Repository;
 
 namespace Remont.WebUI.Controllers.Api
 {
-    public abstract class RemontController<TItem> : ApiController
+    public abstract class RemontController<TItem, TRequest> : ApiController
         where TItem : BaseItem
+		where TRequest : PageInfoRequest
     {
         protected readonly IRepository<TItem> Repository;
 
@@ -17,13 +19,13 @@ namespace Remont.WebUI.Controllers.Api
             Repository = repository;
         }
 
-        public virtual Response<TItem> Get([FromUri] PageInfoRequest pageInfoRequest)
+		public virtual Response<TItem> Get([FromUri] TRequest pageInfoRequest)
         {
             if ("item".Equals(pageInfoRequest.Action, StringComparison.OrdinalIgnoreCase))
             {
                 return new Response<TItem>
                 {
-                    Item = Repository.Find(pageInfoRequest),
+					Item = Repository.Find(pageInfoRequest),
                     PageInfoRequest = pageInfoRequest
                 };
             }

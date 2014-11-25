@@ -11,9 +11,12 @@ namespace Remont.DAL.Repositories
         {
             var table = base.InternalFind(pageInfoRequest);
 
-            table.Columns = DbContext.Set<Column>().Where(c => c.TableId == pageInfoRequest.Id).ToList();
+	        if (table != null)
+	        {
+		        table.Columns = DbContext.Set<Column>().Where(c => c.TableId == pageInfoRequest.Id).ToList();
+	        }
 
-            return table;
+	        return table;
         }
 
         protected override Table InternalAddOrUpdate(Table item)

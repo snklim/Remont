@@ -114,7 +114,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
-    <Content Include="Pages\Controls\control-text.html" />
+    <Content Include="Pages\Controls\control_people_picker.html" />
+    <Content Include="Pages\Controls\control_select.html" />
+    <Content Include="Pages\Controls\control_text.html" />
     <Content Include="Pages\generic_list.html" />
     <Content Include="Pages\generic_edit.html" />
     <Content Include="Pages\table_edit.html" />
@@ -238,6 +240,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\ControlController.cs" />
+    <Compile Include="Controllers\Api\DataSourceController.cs" />
     <Compile Include="Controllers\Api\GenericController.cs" />
     <Compile Include="Controllers\Api\RemontController.cs" />
     <Compile Include="Controllers\Api\Response.cs" />
