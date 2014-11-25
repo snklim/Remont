@@ -14,5 +14,9 @@ namespace Remont.Common.Model
 		public virtual Table Table { get; set; }
 
 		public virtual string Value { get; set; }
+
+		public Cell CellDataSource { get; set; }
+
+		public int? CellDataSourceId { get; set; }
 	}
 }

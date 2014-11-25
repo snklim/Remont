@@ -31,10 +31,16 @@ namespace Remont.WebUI.Controllers.Api
 
             if (response.Items != null)
             {
-                response.Items.ForEach(row => _cellRepository
-                    .GetAll(pageInfoRequest, cells => cells
-                        .Where(c => c.RowId == row.Id)).ToList()
-                    .ForEach(c => row.Cells.Add(c != null ? new Cell {Id = c.Id, Value = c.Value} : new Cell())));
+	            response.Items.ForEach(row => _cellRepository
+		            .GetAll(pageInfoRequest, cells => cells
+			            .Where(c => c.RowId == row.Id)).ToList()
+		            .ForEach(c => row.Cells.Add(c != null
+			            ? new Cell
+			            {
+				            Id = c.Id,
+				            Value = c.CellDataSource != null ? c.CellDataSource.Value : c.Value
+			            }
+			            : new Cell())));
             }
             else if (response.Item != null)
             {
@@ -48,6 +54,7 @@ namespace Remont.WebUI.Controllers.Api
                             {
                                 Id = c.Id,
                                 ColumnId = c.ColumnId,
+								CellDataSourceId = c.CellDataSourceId,
                                 TableId = pageInfoRequest.TableId,
                                 Value = c.Value
                             }

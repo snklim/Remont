@@ -19,8 +19,8 @@
                     .get({ tableId: column.DataSourceTableId, columnId: column.DataSourceColumnId })
                     .then(function(data) {
 
-                        data.Items.forEach(function(dsItem) {
-                            dsItems.push({ Id: dsItem.Id.toString(), Value: dsItem.Value });
+                        data.Items.forEach(function (dsItem) {
+                            dsItems.push(dsItem);
                         });
 
                     });
