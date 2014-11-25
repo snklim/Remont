@@ -3,7 +3,7 @@
 
     remontApp.run(function ($templateCache, $http, $q) {
 
-        var controls = ['control_modal.html', 'control_text.html', 'control_select.html', 'control_entity_picker.html'];
+        var controls = ['control_text.html', 'control_select.html', 'control_entity_picker.html'];
         
         controls.forEach(function (controlId) {
 

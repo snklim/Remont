@@ -3,6 +3,8 @@
         
         var item = response.Item;
 
+        $scope.dataSource = {};
+
         $scope.columns = response.Bag;
 
         $scope.dataSourcePerColumn = [];
@@ -40,7 +42,8 @@
         $scope.beginEntitySelect = function (cell, cilumnIndex) {
             //console.log(cilumnIndex, cell, $scope.columns[cilumnIndex]);
 
-            $scope.DataSourceTableId = $scope.columns[cilumnIndex].DataSourceTableId;
+
+            $scope.dataSource.tableId = $scope.columns[cilumnIndex].DataSourceTableId;
 
             $('#EntityPickerModal').modal('toggle');
         }
