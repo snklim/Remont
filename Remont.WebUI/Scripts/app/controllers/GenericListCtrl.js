@@ -5,5 +5,9 @@
         
         baseListCtrl.create($scope, response, extData.pageUrl, extData.serviceUrl, extData.tableId);
 
+        $scope.onRowClicked = function(row) {
+            console.log(row);
+        }
+
     });
 })();

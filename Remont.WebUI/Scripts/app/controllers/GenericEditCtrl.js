@@ -1,5 +1,5 @@
 ﻿(function() {
-    angular.module('remontApp').controller('GenericEditCtrl', function ($http, $scope, response, baseEditCtrl, extData, dataFeeder) {
+    angular.module('remontApp').controller('GenericEditCtrl', function ($http, $location, $scope, response, baseEditCtrl, extData, dataFeeder) {
         
         var item = response.Item;
 
@@ -45,7 +45,9 @@
 
             $scope.dataSource.tableId = $scope.columns[cilumnIndex].DataSourceTableId;
 
-            $('#EntityPickerModal').modal('toggle');
+            //$('#EntityPickerModal').modal('toggle');
+
+            $location.path('/#/customer/list');
         }
 
     });

@@ -115,6 +115,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Pages\Controls\control_entity_picker.html" />
+    <Content Include="Pages\Controls\control_modal.html" />
     <Content Include="Pages\Controls\control_select.html" />
     <Content Include="Pages\Controls\control_text.html" />
     <Content Include="Pages\generic_list.html" />

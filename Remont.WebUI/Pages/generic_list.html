@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="row in items">
+            <tr ng-repeat="row in items" ng-click="onRowClicked(row)">
                 <td>{{ row.Id }}</td>
                 <td ng-repeat="cell in row.Cells">{{ cell.Value }}</td>
                 <td>

@@ -12,14 +12,14 @@
     window.pages = [];
 
     @foreach (Table table in ViewBag.Tables)
-        {
-            <text>window.pages.push({
+    {
+        <text>window.pages.push({
         pageUrl: '@table.TableName.ToLowerInvariant().Replace(" ", "")',
         ctrlName: 'Generic',
         title: '@table.TableName',
         serviceUrl: '/api/generic',
         tableId: @table.Id
             })</text>
-        }
+    }
     </script>
 }

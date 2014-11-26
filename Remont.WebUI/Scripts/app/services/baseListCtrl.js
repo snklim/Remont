@@ -19,6 +19,7 @@
                     $location.path(pageUrl + '/create/');
                 }
 
+                return false;
             };
 
             scope.pageChange = function () {
