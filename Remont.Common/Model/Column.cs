@@ -19,7 +19,5 @@ namespace Remont.Common.Model
 		public int DataSourceColumnId { get; set; }
 
         public Table Table { get; set; }
-
-        public virtual ICollection<Row> Rows { get; set; }
     }
 }
