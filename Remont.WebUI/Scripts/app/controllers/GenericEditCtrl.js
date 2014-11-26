@@ -1,5 +1,12 @@
 ﻿(function() {
-    angular.module('remontApp').controller('GenericEditCtrl', function ($http, $location, $scope, response, baseEditCtrl, extData, dataFeeder) {
+    angular.module('remontApp').controller('GenericEditCtrl', function ($http, $location, $scope,
+        response, baseEditCtrl, extData, dataFeeder, editEntityContext) {
+
+        var editingItem = editEntityContext.get('editingItem');
+        if (editingItem) {
+            editEntityContext.remove('editingItem');
+            response.Item = editingItem;
+        }
         
         var item = response.Item;
 
@@ -39,15 +46,25 @@
             });
         };
 
-        $scope.beginEntitySelect = function (cell, cilumnIndex) {
-            //console.log(cilumnIndex, cell, $scope.columns[cilumnIndex]);
+        $scope.beginEntitySelect = function (cell, columnIndex) {
 
+            $scope.dataSource.tableId = $scope.columns[columnIndex].DataSourceTableId;
+            
+            var backHash = $location.path();
+            var currentEditingItem = $scope.item;
 
-            $scope.dataSource.tableId = $scope.columns[cilumnIndex].DataSourceTableId;
+            editEntityContext.put('onEntitySelected', function (row) {
+                editEntityContext.remove('onEntitySelected');
 
-            //$('#EntityPickerModal').modal('toggle');
+                currentEditingItem.Cells[columnIndex].DataSourceRowId = row.Id;
+                currentEditingItem.Cells[columnIndex].DataSourceRow = row;
 
-            $location.path('/#/customer/list');
+                editEntityContext.put('editingItem', currentEditingItem);
+
+                $location.path(backHash);
+            });
+
+            $location.path('customer/list');
         }
 
     });

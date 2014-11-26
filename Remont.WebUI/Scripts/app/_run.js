@@ -1,5 +1,10 @@
-﻿(function() {
+﻿(function () {
+
     var remontApp = angular.module('remontApp', ['ngRoute']);
+
+    remontApp.factory('editEntityContext', function($cacheFactory) {
+        return $cacheFactory('edit-entity-context');
+    });
 
     remontApp.run(function ($templateCache, $http, $q) {
 
@@ -17,4 +22,5 @@
 
         });
     });
+
 })();

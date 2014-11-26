@@ -53,11 +53,13 @@ namespace Remont.WebUI.Controllers.Api
                             ? new Cell
                             {
                                 Id = c.Id,
+                                RowId = c.RowId,
                                 ColumnId = c.ColumnId,
 								DataSourceCellId = c.DataSourceCellId,
 								DataSourceRowId = c.DataSourceRowId,
                                 TableId = pageInfoRequest.TableId,
-                                Value = c.Value
+                                Value = c.Value,
+                                DataSourceRow = c.DataSourceRow
                             }
                             : new Cell
                             {
