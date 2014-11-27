@@ -19,8 +19,8 @@ namespace Remont.Common.Model
 
 		public int? DataSourceCellId { get; set; }
 
-		public Row DataSourceRow { get; set; }
+        public Row DataSourceRow { get; set; }
 
-		public int? DataSourceRowId { get; set; }
+        public int? DataSourceRowId { get; set; }
 	}
 }

@@ -29,7 +29,14 @@ namespace Remont.DAL
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
 			modelBuilder.Entity<Row>().ToTable("Row");
-			modelBuilder.Entity<Cell>().ToTable("Cell");
+
+            modelBuilder.Entity<Cell>().ToTable("Cell");
+
+            modelBuilder.Entity<Cell>().HasOptional(cell => cell.DataSourceRow)
+                .WithMany().HasForeignKey(cell => cell.DataSourceRowId);
+            modelBuilder.Entity<Cell>().HasOptional(cell => cell.DataSourceCell)
+                .WithMany().HasForeignKey(cell => cell.DataSourceCellId);
+
 			modelBuilder.Entity<Control>().ToTable("Control");
             modelBuilder.Entity<Table>().ToTable("Table");
             modelBuilder.Entity<Column>().ToTable("Column");

@@ -26,5 +26,11 @@ namespace Remont.DAL.Repositories
 
             return query;
         }
+
+        protected override Cell InternalAddOrUpdate(Cell item)
+        {
+            item.DataSourceRow = null;
+            return base.InternalAddOrUpdate(item);
+        }
     }
 }

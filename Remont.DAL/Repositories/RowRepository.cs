@@ -13,8 +13,11 @@ namespace Remont.DAL.Repositories
         protected override IQueryable<Row> InternalQuery(PageInfoRequest pageInfoRequest, Func<IQueryable<Row>, IQueryable<Row>> filter = null)
         {
             var query = base.InternalQuery(pageInfoRequest, filter);
-			
-			query = query.Include(row => row.Cells);
+
+            query = query
+                .Include(row => row.Cells)
+                .Include("Cells.DataSourceRow")
+                .Include("Cells.DataSourceRow.Cells");
 			
             return query;
         }
@@ -52,7 +55,17 @@ namespace Remont.DAL.Repositories
 		    return row;
 	    }
 
-	    private void MapCellAndColumn(PageInfoRequest pageInfoRequest, Row row, List<Column> columns)
+        protected override Row InternalAddOrUpdate(Row item)
+        {
+            foreach (var cell in item.Cells)
+            {
+                cell.Column = null;
+                cell.DataSourceRow = null;
+            }
+            return base.InternalAddOrUpdate(item);
+        }
+
+        private void MapCellAndColumn(PageInfoRequest pageInfoRequest, Row row, List<Column> columns)
 	    {
 		    var cells =
 			    from column in DbContext.Set<Column>().Where(c => c.TableId == pageInfoRequest.TableId)
