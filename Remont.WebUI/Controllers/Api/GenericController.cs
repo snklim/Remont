@@ -69,15 +69,15 @@ namespace Remont.WebUI.Controllers.Api
             }
             else
             {
-                response.Item = new Row
-                {
-                    TableId = pageInfoRequest.TableId,
-                    Cells = columns.Select(column => new Cell
-                    {
-                        ColumnId = column.Id,
-                        TableId = pageInfoRequest.TableId
-                    }).ToList()
-                };
+				//response.Item = new Row
+				//{
+				//	TableId = pageInfoRequest.TableId,
+				//	Cells = columns.Select(column => new Cell
+				//	{
+				//		ColumnId = column.Id,
+				//		TableId = pageInfoRequest.TableId
+				//	}).ToList()
+				//};
             }
 
             return response;
