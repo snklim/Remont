@@ -51,7 +51,7 @@ namespace Remont.DAL.Repositories
             return query;
         }
 
-	    private IEnumerable<TItem> InternalGet(PageInfoRequest pageInfoRequest,
+	    protected virtual IEnumerable<TItem> InternalGet(PageInfoRequest pageInfoRequest,
 		    Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
 	    {
 		    const int pageSize = 5;
@@ -75,7 +75,7 @@ namespace Remont.DAL.Repositories
 			    .Skip(pageInfoRequest.PageIndex*pageSize)
 			    .Take(pageSize);
 
-		    return query;
+		    return query.ToList();
 	    }
 
 	    public IEnumerable<TItem> Get(PageInfoRequest pageInfoRequest,

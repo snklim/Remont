@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Remont.Common;
@@ -11,23 +12,34 @@ namespace Remont.DAL.Repositories
         protected override IQueryable<Row> InternalQuery(PageInfoRequest pageInfoRequest, Func<IQueryable<Row>, IQueryable<Row>> filter = null)
         {
             var query = base.InternalQuery(pageInfoRequest, filter);
-
-            //query = query.Include(row => row.Cells);
-
-            //query = from row in query
-            //    join cell in DbContext.Set<Cell>() on row.Id equals cell.RowId
-            //    select row;
-
-/*
-select * from 
-(
-	select c1.Id as ColumnId, r.Id as RowId from [Column] c1, [Row] r
-	where r.TableId = 1 and c1.TableId = 1
-) as tt
-left join Cell c on tt.ColumnId = c.ColumnId and tt.RowId = c.RowId
-*/
-
+			
+			query = query.Include(row => row.Cells);
+			
             return query;
         }
+
+	    protected override IEnumerable<Row> InternalGet(PageInfoRequest pageInfoRequest, Func<IQueryable<Row>, IQueryable<Row>> filter = null)
+	    {
+		    var rows = base.InternalGet(pageInfoRequest, filter);
+
+			var enumerable = rows as IList<Row> ?? rows.ToList();
+
+		    foreach (var row in enumerable)
+		    {
+			    var cells =
+				    from column in DbContext.Set<Column>().Where(c => c.TableId == pageInfoRequest.TableId)
+				    join cell in DbContext.Set<Cell>().Where(c => c.TableId == pageInfoRequest.TableId && c.RowId == row.Id)
+					    on column.Id equals cell.ColumnId into cellsLeftJoin
+				    from cell2 in cellsLeftJoin.DefaultIfEmpty()
+				    select cell2;
+
+			    foreach (var cell in cells.Where(cell => cell == null))
+			    {
+				    row.Cells.Add(new Cell());
+			    }
+		    }
+
+		    return enumerable;
+	    }
     }
 }

@@ -31,41 +31,41 @@ namespace Remont.WebUI.Controllers.Api
 
             if (response.Items != null)
             {
-                response.Items.ForEach(row => _cellRepository
-                    .GetAll(pageInfoRequest, cells => cells
-                        .Where(c => c.RowId == row.Id)).ToList()
-                    .ForEach(c => row.Cells.Add(c != null
-                        ? new Cell
-                        {
-                            Id = c.Id,
-                            Value = c.DataSourceCell != null ? c.DataSourceCell.Value : c.Value
-                        }
-                        : new Cell())));
+				//response.Items.ForEach(row => _cellRepository
+				//	.GetAll(pageInfoRequest, cells => cells
+				//		.Where(c => c.RowId == row.Id)).ToList()
+				//	.ForEach(c => row.Cells.Add(c != null
+				//		? new Cell
+				//		{
+				//			Id = c.Id,
+				//			Value = c.DataSourceCell != null ? c.DataSourceCell.Value : c.Value
+				//		}
+				//		: new Cell())));
             }
             else if (response.Item != null)
             {
-                var row = response.Item;
-                _cellRepository
-                    .GetAll(pageInfoRequest, cells => cells
-                        .Where(c => c.RowId == row.Id)).ToList()
-                    .ForEach(
-                        c => row.Cells.Add(c != null
-                            ? new Cell
-                            {
-                                Id = c.Id,
-                                RowId = c.RowId,
-                                ColumnId = c.ColumnId,
-								DataSourceCellId = c.DataSourceCellId,
-								DataSourceRowId = c.DataSourceRowId,
-                                TableId = pageInfoRequest.TableId,
-                                Value = c.Value,
-                                //DataSourceRow = c.DataSourceRow
-                            }
-                            : new Cell
-                            {
-                                ColumnId = columns[row.Cells.Count].Id,
-                                TableId = pageInfoRequest.TableId
-                            }));
+				//var row = response.Item;
+				//_cellRepository
+				//	.GetAll(pageInfoRequest, cells => cells
+				//		.Where(c => c.RowId == row.Id)).ToList()
+				//	.ForEach(
+				//		c => row.Cells.Add(c != null
+				//			? new Cell
+				//			{
+				//				Id = c.Id,
+				//				RowId = c.RowId,
+				//				ColumnId = c.ColumnId,
+				//				DataSourceCellId = c.DataSourceCellId,
+				//				DataSourceRowId = c.DataSourceRowId,
+				//				TableId = pageInfoRequest.TableId,
+				//				Value = c.Value,
+				//				//DataSourceRow = c.DataSourceRow
+				//			}
+				//			: new Cell
+				//			{
+				//				ColumnId = columns[row.Cells.Count].Id,
+				//				TableId = pageInfoRequest.TableId
+				//			}));
             }
             else
             {

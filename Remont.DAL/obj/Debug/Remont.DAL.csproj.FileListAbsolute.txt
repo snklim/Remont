@@ -22,3 +22,15 @@ D:\work\Remont-master\Remont.DAL\bin\Debug\EntityFramework.SqlServer.xml
 D:\work\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.csprojResolveAssemblyReference.cache
 D:\work\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.dll
 D:\work\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.pdb
+D:\homework\Remont-master\Remont.DAL\bin\Debug\Remont.DAL.dll.config
+D:\homework\Remont-master\Remont.DAL\bin\Debug\Remont.DAL.dll
+D:\homework\Remont-master\Remont.DAL\bin\Debug\Remont.DAL.pdb
+D:\homework\Remont-master\Remont.DAL\bin\Debug\EntityFramework.dll
+D:\homework\Remont-master\Remont.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\homework\Remont-master\Remont.DAL\bin\Debug\Remont.Common.dll
+D:\homework\Remont-master\Remont.DAL\bin\Debug\Remont.Common.pdb
+D:\homework\Remont-master\Remont.DAL\bin\Debug\EntityFramework.xml
+D:\homework\Remont-master\Remont.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\homework\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.csprojResolveAssemblyReference.cache
+D:\homework\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.dll
+D:\homework\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.pdb
