@@ -34,8 +34,6 @@ namespace Remont.DAL
 
             modelBuilder.Entity<Cell>().HasOptional(cell => cell.DataSourceRow)
                 .WithMany().HasForeignKey(cell => cell.DataSourceRowId);
-            modelBuilder.Entity<Cell>().HasOptional(cell => cell.DataSourceCell)
-                .WithMany().HasForeignKey(cell => cell.DataSourceCellId);
 
 			modelBuilder.Entity<Control>().ToTable("Control");
             modelBuilder.Entity<Table>().ToTable("Table");

@@ -16,5 +16,12 @@
 
         }
 
+        $scope.getValue = function (cell) {
+            if (cell.DataSourceRow) {
+                return cell.DataSourceRow.Cells[0].Value;
+            }
+            return cell.Value;
+        }
+
     });
 })();

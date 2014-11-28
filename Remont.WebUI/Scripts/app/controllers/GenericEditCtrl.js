@@ -22,10 +22,10 @@
 
             $scope.dataSourcePerColumn[cilumnIndex] = dsItems;
 
-            if (column.DataSourceTableId && column.DataSourceColumnId) {
+            if (column.DataSourceTableId) {
 
                 dataFeeder.create('api/dataSource')
-                    .get({ tableId: column.DataSourceTableId, columnId: column.DataSourceColumnId })
+                    .get({ tableId: column.DataSourceTableId })
                     .then(function(data) {
 
                         data.Items.forEach(function (dsItem) {
@@ -40,9 +40,9 @@
         baseEditCtrl.create($scope, item, extData.pageUrl, extData.serviceUrl);
 
         $scope.onSave = function (newItem) {
-            item.Cells.splice(0, item.Cells.length);
+            //item.Cells.splice(0, item.Cells.length);
             $.each(newItem.Cells, function (i, cell) {
-                item.Cells.push(cell);
+                item.Cells[i].Id = cell.Id;
             });
         };
 

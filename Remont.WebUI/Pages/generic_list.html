@@ -14,7 +14,7 @@
         <tbody>
             <tr ng-repeat="row in items" ng-click="onRowClicked(row)">
                 <td>{{ row.Id }}</td>
-                <td ng-repeat="cell in row.Cells">{{ cell.Value }}</td>
+                <td ng-repeat="cell in row.Cells">{{ getValue(cell) }}</td>
                 <td>
                     <div style="float: right">
                         <a ng-click="edit(row.Id)" class="glyphicon glyphicon-pencil"></a>

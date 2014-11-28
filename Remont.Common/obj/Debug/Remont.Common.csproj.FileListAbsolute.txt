@@ -8,3 +8,8 @@ D:\work\Remont-master\Remont.Common\bin\Debug\Remont.Common.pdb
 D:\work\Remont-master\Remont.Common\obj\Debug\Remont.Common.csprojResolveAssemblyReference.cache
 D:\work\Remont-master\Remont.Common\obj\Debug\Remont.Common.dll
 D:\work\Remont-master\Remont.Common\obj\Debug\Remont.Common.pdb
+D:\homework\Remont-master\Remont.Common\bin\Debug\Remont.Common.dll
+D:\homework\Remont-master\Remont.Common\bin\Debug\Remont.Common.pdb
+D:\homework\Remont-master\Remont.Common\obj\Debug\Remont.Common.csprojResolveAssemblyReference.cache
+D:\homework\Remont-master\Remont.Common\obj\Debug\Remont.Common.dll
+D:\homework\Remont-master\Remont.Common\obj\Debug\Remont.Common.pdb

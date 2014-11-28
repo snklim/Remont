@@ -10,22 +10,18 @@ using Remont.Common.Repository;
 
 namespace Remont.WebUI.Controllers.Api
 {
-	public class DataSourceRequest : PageInfoRequest
-	{
-		public int ColumnId { get; set; }
-	}
-
-	public class DataSourceController : RemontController<Cell, DataSourceRequest>
+	public class DataSourceController : RemontController<Row, PageInfoRequest>
     {
-	    public DataSourceController(IRepository<Cell> repository) : base(repository)
+		public DataSourceController(IRepository<Row> repository)
+			: base(repository)
 	    {
 	    }
 
-		public override Response<Cell> Get([FromUri]DataSourceRequest pageInfoRequest)
+		public override Response<Row> Get([FromUri]PageInfoRequest pageInfoRequest)
 	    {
-			return new Response<Cell>
+			return new Response<Row>
 			{
-				Items = Repository.GetAll(pageInfoRequest, cells => cells.Where(cell => cell.ColumnId == pageInfoRequest.ColumnId)).ToList(),
+				Items = Repository.GetAll(pageInfoRequest, rows => rows.Where(row => row.TableId == pageInfoRequest.TableId)).ToList(),
 				PageInfoRequest = pageInfoRequest
 			};
 	    }
