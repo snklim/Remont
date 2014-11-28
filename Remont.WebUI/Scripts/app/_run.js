@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var remontApp = angular.module('remontApp', ['ngRoute']);
+    var remontApp = angular.module('remontApp', ['ngRoute', 'ngSanitize']);
 
     remontApp.factory('editEntityContext', function($cacheFactory) {
         return $cacheFactory('edit-entity-context');
