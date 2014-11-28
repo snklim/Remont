@@ -47,15 +47,11 @@
 
         $scope.beginEntitySelect = function (cell, columnIndex) {
 
-            $scope.dataSource.tableId = $scope.columns[columnIndex].DataSourceTableId;
-            
             var backHash = $location.path();
             var currentEditingItem = $scope.item;
 
             editEntityContext.put('onEntitySelected', function (row) {
                 editEntityContext.remove('onEntitySelected');
-
-                row.Table = cell.DataSourceRow.Table;
 
                 currentEditingItem.Cells[columnIndex].DataSourceRowId = row.Id;
                 currentEditingItem.Cells[columnIndex].DataSourceRow = row;
@@ -65,7 +61,7 @@
                 $location.path(backHash);
             });
             
-            $location.path(cell.DataSourceRow.Table.TableName.toLowerCase() + '/list');
+            $location.path($scope.columns[columnIndex].DataSourceTable.TableName.toLowerCase() + '/list');
         }
 
     });

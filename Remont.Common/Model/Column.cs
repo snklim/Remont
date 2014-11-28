@@ -14,7 +14,9 @@ namespace Remont.Common.Model
 
 		public int ControlId { get; set; }
 
-		public int DataSourceTableId { get; set; }
+		public int? DataSourceTableId { get; set; }
+
+		public Table DataSourceTable { get; set; }
 
 		public string DataSourceValueFormat { get; set; }
 

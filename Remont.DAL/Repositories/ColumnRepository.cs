@@ -13,8 +13,15 @@ namespace Remont.DAL.Repositories
 			var query = base.InternalQuery(pageInfoRequest, filter);
 
 			query = query.Include(column => column.Control);
+			query = query.Include(column => column.DataSourceTable);
 
 			return query;
+		}
+
+		protected override Column InternalAddOrUpdate(Column item)
+		{
+			item.DataSourceTable = null;
+			return base.InternalAddOrUpdate(item);
 		}
 	}
 }

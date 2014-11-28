@@ -131,6 +131,8 @@
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\configs\filterProvider.js" />
@@ -146,11 +148,13 @@
     <Content Include="Scripts\app\controllers\CustomerListCtrl.js" />
     <Content Include="Scripts\app\controllers\MainViewCtrl.js" />
     <Content Include="Scripts\app\directive\controlType.js" />
+    <Content Include="Scripts\app\filters\formatValue.js" />
     <Content Include="Scripts\app\services\baseEditCtrl.js" />
     <Content Include="Scripts\app\services\baseListCtrl.js" />
     <Content Include="Scripts\app\services\dataFeeder.js" />
     <Content Include="Scripts\app\configs\pageResolver.js" />
     <Content Include="Scripts\app\services\pageService.js" />
+    <Content Include="Scripts\app\utils\stringFormat.js" />
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -229,6 +233,7 @@
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -299,7 +304,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2594</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

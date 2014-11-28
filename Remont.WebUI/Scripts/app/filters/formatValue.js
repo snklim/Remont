@@ -1,14 +1,18 @@
 ﻿(function() {
     angular.module('remontApp').filter('formatValue', function() {
-        return function (cell) {
+        return function (cell, column) {
+
+            if (!column)
+                column = cell.Column;
+
             if (cell.DataSourceRow) {
 
-                if (cell.Column.DataSourceValueFormat) {
+                if (column && column.DataSourceValueFormat) {
                     var values = [];
                     cell.DataSourceRow.Cells.forEach(function (c) {
                         values.push(c.Value);
                     });
-                    var ret = String.format(cell.Column.DataSourceValueFormat, values);
+                    var ret = String.format(column.DataSourceValueFormat, values);
 
                     return ret;
                 }

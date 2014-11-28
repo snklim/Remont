@@ -1,5 +1,5 @@
 ﻿<div class="input-group">
-    <span ng-bind-html="item.Cells[$index] | formatValue" class="form-control"></span>
+    <span ng-bind-html="item.Cells[$index] | formatValue:columns[$index]" class="form-control"></span>
     <span class="input-group-addon">
         <a class="glyphicon glyphicon-search" ng-click="beginEntitySelect(item.Cells[$index], $index)"></a>
     </span>
