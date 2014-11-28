@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace Remont.Common.Model
 {
 	public class Cell : TableSpecificBaseItem
@@ -18,5 +20,7 @@ namespace Remont.Common.Model
         public Row DataSourceRow { get; set; }
 
         public int? DataSourceRowId { get; set; }
+
+		public ICollection<Row> DataSourceRows { get;set; }
 	}
 }

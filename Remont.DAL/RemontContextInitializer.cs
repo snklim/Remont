@@ -22,6 +22,11 @@ namespace Remont.DAL
 				ControlId = "ENTITY_PICKER"
 			});
 
+			context.Controls.Add(new Control
+			{
+				ControlId = "LIST_ENTITY_PICKER"
+			});
+
             base.Seed(context);
         }
     }
