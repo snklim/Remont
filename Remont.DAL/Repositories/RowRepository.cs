@@ -16,7 +16,8 @@ namespace Remont.DAL.Repositories
 
             query = query
                 .Include(row => row.Cells)
-                .Include("Cells.DataSourceRow")
+				.Include("Cells.DataSourceRow")
+				.Include("Cells.DataSourceRow.Table")
                 .Include("Cells.DataSourceRow.Cells");
 			
             return query;

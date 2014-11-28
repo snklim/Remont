@@ -55,6 +55,8 @@
             editEntityContext.put('onEntitySelected', function (row) {
                 editEntityContext.remove('onEntitySelected');
 
+                row.Table = cell.DataSourceRow.Table;
+
                 currentEditingItem.Cells[columnIndex].DataSourceRowId = row.Id;
                 currentEditingItem.Cells[columnIndex].DataSourceRow = row;
 
@@ -62,8 +64,8 @@
 
                 $location.path(backHash);
             });
-
-            $location.path('customer/list');
+            
+            $location.path(cell.DataSourceRow.Table.TableName.toLowerCase() + '/list');
         }
 
     });
