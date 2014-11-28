@@ -1,0 +1,12 @@
+﻿<div>
+    <div class="input-group">
+        <span ng-bind-html="item.Cells[$index] | formatValue:columns[$index]" class="form-control"></span>
+        <span class="input-group-addon">
+            <a class="glyphicon glyphicon-search" ng-click="beginEntitySelect(item.Cells[$index], $index)"></a>
+        </span>
+
+    </div>
+    
+    <a href="javascript:void(0)" style="font-weight: bold" ng-click="addColumn()">Add</a>
+    <a href="javascript:void(0)" style="font-weight: bold" ng-click="removeColumn(column)">Remove</a>
+</div>

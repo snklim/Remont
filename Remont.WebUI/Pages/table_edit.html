@@ -19,7 +19,7 @@
                             ng-options="control.Id as control.ControlId for control in controls"></select>
                 </div>
                 
-                <div class="panel panel-default" ng-show="column.ControlId == 2 || column.ControlId == 3">
+                <div class="panel panel-default" ng-show="column.ControlId == 2 || column.ControlId == 3 || column.ControlId == 4">
                     <div class="panel-heading">
                         <h3 class="panel-title">Data Source</h3>
                     </div>
@@ -31,7 +31,7 @@
                                     ng-options="table.Id as table.TableName for table in dataSourceTables"
                                     ng-change="onDataSourceTableChanged($index, column.DataSourceTableId)"></select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label>Value Format</label>
                             <input ng-model="column.DataSourceValueFormat" class="form-control" placeholder="Enter Value Format">
