@@ -22,11 +22,9 @@ namespace Remont.UnitTests.DAL.RepositoryTestst
             Repository = Container.Resolve<IRepository<TItem>>();
         }
 
-        [TearDown]
-        public void DisposeRepository()
+        [SetUp]
+        public void ClearTables()
         {
-            Repository.Dispose();
-
             using (var repo = Container.Resolve<IRepository<Cell>>())
             {
                 repo.GetAll().ToList().ForEach(item => repo.Delete(item));
@@ -46,6 +44,12 @@ namespace Remont.UnitTests.DAL.RepositoryTestst
             {
                 repo.GetAll().ToList().ForEach(item => repo.Delete(item));
             }
+        }
+
+        [TearDown]
+        public void DisposeRepository()
+        {
+            Repository.Dispose();
         }
     }
 }

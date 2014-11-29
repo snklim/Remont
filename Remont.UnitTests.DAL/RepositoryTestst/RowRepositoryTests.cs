@@ -107,25 +107,12 @@ namespace Remont.UnitTests.DAL.RepositoryTestst
                 repo.AddOrUpdate(rowDb1);
             }
 
-            using (var repo = Container.Resolve<IRepository<Table>>())
-            {
-                repo.GetAll().Count().ShouldBeEquivalentTo(2);
-            }
-
             using (var repo = Container.Resolve<IRepository<Row>>())
             {
-                repo.GetAll().Count().ShouldBeEquivalentTo(2);
+                rowDb1 = repo.Find(new PageInfoRequest {Id = rowDb1.Id});
             }
 
-            using (var repo = Container.Resolve<IRepository<Column>>())
-            {
-                repo.GetAll().Count().ShouldBeEquivalentTo(2);
-            }
-
-            using (var repo = Container.Resolve<IRepository<Cell>>())
-            {
-                repo.GetAll().Count().ShouldBeEquivalentTo(2);
-            }
+            rowDb1.Cells.First().DataSourceRows.Should().NotBeEmpty();
         }
     }
 }
