@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
+using Remont.Common.Model;
+using Remont.UnitTests.DAL;
 
 namespace Remont.UnitTests.DAL
 {
-    public class RowRepositoryTests
+    [TestFixture]
+    [Ignore]
+    public class RowRepositoryTests : BaseRepositoryTests<Row>
     {
     }
 }

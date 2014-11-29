@@ -15,7 +15,7 @@ namespace Remont.UnitTests.DAL
         {
             var table = new Table();
             Repository.AddOrUpdate(table);
-            var tableDb = Repository.Find(new PageInfoRequest { Action = "item", Id = table.Id });
+            var tableDb = Repository.Find(new PageInfoRequest { Id = table.Id });
             tableDb.Should().NotBeNull();
         }
 
