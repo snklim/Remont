@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Remont.Common.Model
 {
@@ -21,6 +22,11 @@ namespace Remont.Common.Model
 
         public virtual int? DataSourceRowId { get; set; }
 
-		public virtual ICollection<Row> DataSourceRows { get;set; }
+	    private ICollection<Row> _dataSourceRows;
+
+	    public virtual ICollection<Row> DataSourceRows
+	    {
+	        get { return _dataSourceRows ?? (_dataSourceRows = new Collection<Row>()); }
+	    }
 	}
 }

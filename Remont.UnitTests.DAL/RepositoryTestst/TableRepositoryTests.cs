@@ -2,9 +2,8 @@
 using NUnit.Framework;
 using Remont.Common;
 using Remont.Common.Model;
-using Remont.DAL.Repositories;
 
-namespace Remont.UnitTests.DAL
+namespace Remont.UnitTests.DAL.RepositoryTestst
 {
     [TestFixture]
     public class TableRepositoryTests : BaseRepositoryTests<Table>

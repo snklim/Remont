@@ -48,8 +48,7 @@ namespace Remont.DAL.Repositories
 		    {
 			    row = new Row
 			    {
-				    TableId = pageInfoRequest.TableId,
-					Cells = new Collection<Cell>()
+				    TableId = pageInfoRequest.TableId
 			    };
 		    }
 
@@ -57,29 +56,6 @@ namespace Remont.DAL.Repositories
 
 		    return row;
 	    }
-
-        protected override Row InternalAddOrUpdate(Row row)
-        {
-            DbContext.Entry(row).State = EntityState.Modified;
-            foreach (var cell in row.Cells)
-            {
-                cell.Column = null;
-                cell.DataSourceRow = null;
-                if (cell.DataSourceRows != null)
-                {
-                    //DbContext.Entry(cell).State = EntityState.Modified;
-                    foreach (var dataSourceRow in cell.DataSourceRows.Where(r => r != null))
-                    {
-
-                        //DbContext.Entry(dataSourceRow).State = EntityState.Modified;
-                        //dataSourceRow.DataSourceCells.Add(cell);
-                        //dataSourceRow.Cells = null;
-                        //dataSourceRow.Table = null;
-                    }
-                }
-            }
-            return base.InternalAddOrUpdate(row);
-        }
 
         private void MapCellAndColumn(PageInfoRequest pageInfoRequest, Row row, List<Column> columns)
 	    {

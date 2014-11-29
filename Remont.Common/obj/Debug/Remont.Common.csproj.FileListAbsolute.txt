@@ -10,6 +10,5 @@ D:\homework\Remont-master\Remont.Common\obj\Debug\Remont.Common.dll
 D:\homework\Remont-master\Remont.Common\obj\Debug\Remont.Common.pdb
 C:\work\Remont\Remont.Common\bin\Debug\Remont.Common.dll
 C:\work\Remont\Remont.Common\bin\Debug\Remont.Common.pdb
-C:\work\Remont\Remont.Common\obj\Debug\Remont.Common.csprojResolveAssemblyReference.cache
 C:\work\Remont\Remont.Common\obj\Debug\Remont.Common.dll
 C:\work\Remont\Remont.Common\obj\Debug\Remont.Common.pdb

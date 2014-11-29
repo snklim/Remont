@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Remont.Common.Model
 {
@@ -6,8 +7,11 @@ namespace Remont.Common.Model
     {
 		public virtual Table Table { get; set; }
 
-        public virtual ICollection<Cell> Cells { get; set; }
+	    private ICollection<Cell> _cells;
 
-        public virtual ICollection<Cell> DataSourceCells { get; set; }
+	    public virtual ICollection<Cell> Cells
+	    {
+	        get { return _cells ?? (_cells = new Collection<Cell>()); }
+	    }
     }
 }

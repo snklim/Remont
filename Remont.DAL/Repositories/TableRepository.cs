@@ -14,18 +14,18 @@ namespace Remont.DAL.Repositories
 	        return base.InternalQuery(pageInfoRequest, filter).Include(t => t.Columns);
 	    }
 
-        protected override Table InternalAddOrUpdate(Table row)
+        protected override Table InternalAddOrUpdate(Table item)
         {
-            row = base.InternalAddOrUpdate(row);
+            item = base.InternalAddOrUpdate(item);
 
-            foreach (var c in row.Columns)
+            foreach (var c in item.Columns)
             {
-                c.TableId = row.Id;
+                c.TableId = item.Id;
                 DbContext.Set<Column>().AddOrUpdate(c);
             }
             DbContext.SaveChanges();
 
-            return row;
+            return item;
         }
     }
 }

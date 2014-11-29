@@ -11,15 +11,14 @@ namespace Remont.DAL.Repositories
         protected override IQueryable<TItem> InternalQuery(PageInfoRequest pageInfoRequest, 
             Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
 		{
-            if (pageInfoRequest == null)
+            var baseFilter =  new Func<IQueryable<TItem>, IQueryable<TItem>>(items => items);
+
+            if (pageInfoRequest != null && pageInfoRequest.TableId > 0)
             {
-                throw new ArgumentNullException("pageInfoRequest");
+                baseFilter = items => items.Where(item => item.TableId == pageInfoRequest.TableId);
             }
 
-			var baseFilter = new Func<IQueryable<TItem>, IQueryable<TItem>>(
-				items => items.Where(item => item.TableId == pageInfoRequest.TableId));
-
-			if (filter == null)
+            if (filter == null)
                 return base.InternalQuery(pageInfoRequest, baseFilter);
 
             return base.InternalQuery(pageInfoRequest, items => filter(baseFilter(items)));

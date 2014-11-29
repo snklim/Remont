@@ -13,7 +13,14 @@ namespace Remont.DAL.Repositories
         {
             var query = base.InternalQuery(pageInfoRequest, filter);
 
-	        query = from column in DbContext.Set<Column>().Where(column => column.TableId == pageInfoRequest.TableId)
+            var columnsQuery = DbContext.Set<Column>().Where(item => !item.IsDeleted);
+
+            if (pageInfoRequest != null && pageInfoRequest.TableId > 0)
+            {
+                columnsQuery = columnsQuery.Where(column => column.TableId == pageInfoRequest.TableId);
+            }
+
+            query = from column in columnsQuery
 		        join cell in query on column.Id equals cell.ColumnId into cells
 		        from cell2 in cells.DefaultIfEmpty()
 		        join cell3 in DbContext.Set<Cell>() on cell2.Value equals cell3.Id.ToString() into cellDss
@@ -24,12 +31,6 @@ namespace Remont.DAL.Repositories
 			query = query.Include(cell => cell.DataSourceRow);
 
             return query;
-        }
-
-        protected override Cell InternalAddOrUpdate(Cell row)
-        {
-            row.DataSourceRow = null;
-            return base.InternalAddOrUpdate(row);
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Remont.Common.Repository
 
         TItem Find(PageInfoRequest pageInfoRequest);
 
+        TItem Delete(TItem item);
+
         IQueryable<TItem> GetAll(PageInfoRequest pageInfoRequest = null,
             Func<IQueryable<TItem>, IQueryable<TItem>> filter = null);
     }

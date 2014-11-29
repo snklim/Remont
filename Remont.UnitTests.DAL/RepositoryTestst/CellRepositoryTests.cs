@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 using Remont.Common;
 using Remont.Common.Model;
 
-namespace Remont.UnitTests.DAL
+namespace Remont.UnitTests.DAL.RepositoryTestst
 {
     [TestFixture]
     public class CellRepositoryTests : BaseRepositoryTests<Cell>
@@ -53,6 +52,45 @@ namespace Remont.UnitTests.DAL
             var cellDb = Repository.Find(new PageInfoRequest {Id = _cell.Id, TableId = _cell.TableId});
 
             cellDb.DataSourceRow.Should().NotBeNull();
+        }
+
+        [Test]
+        public void Should_store_cell_data_source_rows_for_new_cell()
+        {
+            var table = new Table();
+            var column = new Column { Table = table };
+            var row = new Row();
+            var cell = new Cell { Column = column, Row = row, Value = "SOME VALUE" };
+
+            Repository.AddOrUpdate(cell);
+
+            _cell.DataSourceRows.Add(row);
+            Repository.AddOrUpdate(_cell);
+
+            var cellDb = Repository.Find(new PageInfoRequest { Id = _cell.Id, TableId = _cell.TableId });
+
+            cellDb.DataSourceRows.Should().NotBeEmpty();
+        }
+
+        [Test]
+        public void Should_store_cell_data_source_rows_for_exist_cell()
+        {
+            Repository.AddOrUpdate(_cell);
+            _cell = Repository.Find(new PageInfoRequest { Id = _cell.Id, TableId = _cell.TableId });
+
+            var table = new Table();
+            var column = new Column { Table = table };
+            var row = new Row();
+            var cell = new Cell { Column = column, Row = row, Value = "SOME VALUE" };
+
+            Repository.AddOrUpdate(cell);
+
+            _cell.DataSourceRows.Add(row);
+
+            Repository.AddOrUpdate(_cell);
+            _cell = Repository.Find(new PageInfoRequest {Id = _cell.Id, TableId = _cell.TableId});
+
+            _cell.DataSourceRows.Should().NotBeEmpty();
         }
     }
 }

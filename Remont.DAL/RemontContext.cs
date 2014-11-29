@@ -36,7 +36,7 @@ namespace Remont.DAL
                 .WithMany().HasForeignKey(cell => cell.DataSourceRowId);
 
             modelBuilder.Entity<Cell>().HasMany(cell => cell.DataSourceRows)
-                .WithMany(row => row.DataSourceCells).Map(m =>
+                .WithMany().Map(m =>
                 {
                     m.ToTable("CellDataSourceRow");
                     m.MapLeftKey("CellId");

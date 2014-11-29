@@ -13,12 +13,12 @@ namespace Remont.DAL.Repositories
     {
         protected RemontContext DbContext = new RemontContext();
 
-        protected virtual TItem InternalAddOrUpdate(TItem row)
+        protected virtual TItem InternalAddOrUpdate(TItem item)
         {
-            DbContext.Set<TItem>().AddOrUpdate(row);
+            DbContext.Set<TItem>().AddOrUpdate(item);
             var num = DbContext.SaveChanges();
 
-            return row;
+            return item;
         }
 
 		public TItem AddOrUpdate(TItem item)
@@ -98,6 +98,16 @@ namespace Remont.DAL.Repositories
             Func<IQueryable<TItem>, IQueryable<TItem>> filter = null)
         {
             return InternalQuery(pageInfoRequest, filter);
+        }
+
+        public TItem Delete(TItem item)
+        {
+            if (item == null) return null;
+            item = DbContext.Set<TItem>().Remove(item);
+
+            DbContext.SaveChanges();
+
+            return item;
         }
 
         public void Dispose()
