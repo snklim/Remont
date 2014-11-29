@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
+using Microsoft.Practices.ObjectBuilder2;
 using Remont.Common;
 using Remont.Common.Model;
 
@@ -56,6 +57,29 @@ namespace Remont.DAL.Repositories
 
 		    return row;
 	    }
+
+        protected override Row InternalAddOrUpdate(Row item)
+        {
+            if (item.Id > 0)
+            {
+                var rowDb = DbContext.Set<Row>()
+                    .Where(r => r.Id == item.Id)
+                    .Include(r => r.Cells)
+                    .Include("Cells.DataSourceRow")
+                    .First();
+
+                item.Cells.ForEach(c => c.DataSourceRows.ForEach(r =>
+                {
+                    var cellDb = rowDb.Cells.First(cDb => cDb.Id == c.Id);
+                    if (cellDb.DataSourceRows.All(rDb => rDb.Id != r.Id))
+                    {
+                        cellDb.DataSourceRows.Add(DbContext.Set<Row>().First(r1 => r1.Id == r.Id));
+                    }
+                }));
+            }
+
+            return base.InternalAddOrUpdate(item);
+        }
 
         private void MapCellAndColumn(PageInfoRequest pageInfoRequest, Row row, List<Column> columns)
 	    {
