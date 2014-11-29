@@ -65,7 +65,7 @@ namespace Remont.DAL.Repositories
                 var rowDb = DbContext.Set<Row>()
                     .Where(r => r.Id == item.Id)
                     .Include(r => r.Cells)
-                    .Include("Cells.DataSourceRow")
+                    .Include("Cells.DataSourceRows")
                     .First();
 
                 item.Cells.ForEach(c => c.DataSourceRows.ForEach(r =>
@@ -73,9 +73,11 @@ namespace Remont.DAL.Repositories
                     var cellDb = rowDb.Cells.First(cDb => cDb.Id == c.Id);
                     if (cellDb.DataSourceRows.All(rDb => rDb.Id != r.Id))
                     {
-                        cellDb.DataSourceRows.Add(DbContext.Set<Row>().First(r1 => r1.Id == r.Id));
+                        cellDb.DataSourceRows.Add(DbContext.Set<Row>().First(rDb => rDb.Id == r.Id));
                     }
                 }));
+
+                return base.InternalAddOrUpdate(rowDb);
             }
 
             return base.InternalAddOrUpdate(item);
