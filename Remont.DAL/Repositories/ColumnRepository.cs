@@ -8,7 +8,7 @@ namespace Remont.DAL.Repositories
 {
 	public class ColumnRepository : TableSpecificRepository<Column>
 	{
-		protected override IQueryable<Column> InternalQuery(PageInfoRequest pageInfoRequest, Func<IQueryable<Column>, IQueryable<Column>> filter = null)
+	    protected override IQueryable<Column> InternalQuery(PageInfoRequest pageInfoRequest, Func<IQueryable<Column>, IQueryable<Column>> filter = null)
 		{
 			var query = base.InternalQuery(pageInfoRequest, filter);
 
@@ -18,10 +18,10 @@ namespace Remont.DAL.Repositories
 			return query;
 		}
 
-		protected override Column InternalAddOrUpdate(Column item)
+		protected override Column InternalAddOrUpdate(Column row)
 		{
-			item.DataSourceTable = null;
-			return base.InternalAddOrUpdate(item);
+			row.DataSourceTable = null;
+			return base.InternalAddOrUpdate(row);
 		}
 	}
 }

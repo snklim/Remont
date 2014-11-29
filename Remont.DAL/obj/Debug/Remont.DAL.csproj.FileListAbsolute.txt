@@ -34,3 +34,9 @@ D:\homework\Remont-master\Remont.DAL\bin\Debug\EntityFramework.SqlServer.xml
 D:\homework\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.csprojResolveAssemblyReference.cache
 D:\homework\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.dll
 D:\homework\Remont-master\Remont.DAL\obj\Debug\Remont.DAL.pdb
+C:\work\Remont\Remont.DAL\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\work\Remont\Remont.DAL\bin\Debug\Microsoft.Practices.Unity.dll
+C:\work\Remont\Remont.DAL\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\work\Remont\Remont.DAL\bin\Debug\Microsoft.Practices.Unity.xml
+C:\work\Remont\Remont.DAL\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\work\Remont\Remont.DAL\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml

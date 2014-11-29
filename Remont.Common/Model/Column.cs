@@ -12,7 +12,7 @@ namespace Remont.Common.Model
 
 		public Control Control { get; set; }
 
-		public int ControlId { get; set; }
+		public int? ControlId { get; set; }
 
 		public int? DataSourceTableId { get; set; }
 

@@ -18,13 +18,8 @@ namespace Remont.WebUI
             // Web API configuration and services
             var container = new UnityContainer();
 
-            container.RegisterType<IRepository<Table>, TableRepository>();
-            container.RegisterType<IRepository<Control>, EntityRepository<Control>>();
-
-            container.RegisterType<IRepository<Column>, ColumnRepository>();
-            container.RegisterType<IRepository<Row>, RowRepository>();
-            container.RegisterType<IRepository<Cell>, CellRepository>();
-
+            Bootstrapper.Setup(container);
+            
             config.DependencyResolver = new UnityResolver(container);
 
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling

@@ -8,17 +8,17 @@ using Remont.Common.Repository;
 
 namespace Remont.DAL.Repositories
 {
-    public class EntityRepository<TItem> : IRepository<TItem>, IDisposable
+    public class EntityRepository<TItem> : IRepository<TItem>
         where TItem : BaseItem
     {
         protected RemontContext DbContext = new RemontContext();
 
-        protected virtual TItem InternalAddOrUpdate(TItem item)
+        protected virtual TItem InternalAddOrUpdate(TItem row)
         {
-            DbContext.Set<TItem>().AddOrUpdate(item);
-            DbContext.SaveChanges();
+            DbContext.Set<TItem>().AddOrUpdate(row);
+            var num = DbContext.SaveChanges();
 
-            return item;
+            return row;
         }
 
 		public TItem AddOrUpdate(TItem item)

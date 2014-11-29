@@ -45,7 +45,7 @@
             });
         };
 
-        $scope.beginEntitySelect = function (cell, columnIndex) {
+        $scope.beginEntitySelect = function (cell, columnIndex, indexInGroup) {
 
             var backHash = $location.path();
             var currentEditingItem = $scope.item;
@@ -53,8 +53,12 @@
             editEntityContext.put('onEntitySelected', function (row) {
                 editEntityContext.remove('onEntitySelected');
 
-                currentEditingItem.Cells[columnIndex].DataSourceRowId = row.Id;
-                currentEditingItem.Cells[columnIndex].DataSourceRow = row;
+                if (!isNaN(indexInGroup)) {
+                    currentEditingItem.Cells[columnIndex].DataSourceRows[indexInGroup] = row;
+                } else {
+                    currentEditingItem.Cells[columnIndex].DataSourceRowId = row.Id;
+                    currentEditingItem.Cells[columnIndex].DataSourceRow = row;
+                }
 
                 editEntityContext.put('editingItem', currentEditingItem);
 
@@ -62,6 +66,13 @@
             });
             
             $location.path($scope.columns[columnIndex].DataSourceTable.TableName.toLowerCase() + '/list');
+        }
+
+        $scope.addDataSourceRow = function (cell) {
+            if (!cell.DataSourceRows)
+                cell.DataSourceRows = [];
+
+            cell.DataSourceRows.push({});
         }
 
     });

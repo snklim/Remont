@@ -21,6 +21,6 @@ namespace Remont.Common.Model
 
         public int? DataSourceRowId { get; set; }
 
-		public ICollection<Row> DataSourceRows { get;set; }
+		public virtual ICollection<Row> DataSourceRows { get;set; }
 	}
 }

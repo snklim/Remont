@@ -1,15 +1,20 @@
 ﻿(function() {
     angular.module('remontApp').filter('formatValue', function() {
-        return function (cell, column) {
+        return function (cell, column, indexInGroup) {
 
             if (!column)
                 column = cell.Column;
 
-            if (cell.DataSourceRow) {
+            var dataSourceRow = cell.DataSourceRow;
+
+            if (!isNaN(indexInGroup))
+                dataSourceRow = cell.DataSourceRows[indexInGroup];
+
+            if (dataSourceRow) {
 
                 if (column && column.DataSourceValueFormat) {
                     var values = [];
-                    cell.DataSourceRow.Cells.forEach(function (c) {
+                    dataSourceRow.Cells.forEach(function (c) {
                         values.push(c.Value);
                     });
                     var ret = String.format(column.DataSourceValueFormat, values);
@@ -17,7 +22,7 @@
                     return ret;
                 }
 
-                return cell.DataSourceRow.Cells[0].Value;
+                return dataSourceRow.Cells && dataSourceRow.Cells[0] && dataSourceRow.Cells[0].Value;
             }
 
             return cell.Value;

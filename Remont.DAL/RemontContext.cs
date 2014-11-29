@@ -31,10 +31,17 @@ namespace Remont.DAL
 			modelBuilder.Entity<Row>().ToTable("Row");
 
             modelBuilder.Entity<Cell>().ToTable("Cell");
+
             modelBuilder.Entity<Cell>().HasOptional(cell => cell.DataSourceRow)
                 .WithMany().HasForeignKey(cell => cell.DataSourceRowId);
-	        modelBuilder.Entity<Cell>().HasMany(cell => cell.DataSourceRows)
-		        .WithMany();
+
+            modelBuilder.Entity<Cell>().HasMany(cell => cell.DataSourceRows)
+                .WithMany(row => row.DataSourceCells).Map(m =>
+                {
+                    m.ToTable("CellDataSourceRow");
+                    m.MapLeftKey("CellId");
+                    m.MapRightKey("RowId");
+                });
 
 			modelBuilder.Entity<Control>().ToTable("Control");
             modelBuilder.Entity<Table>().ToTable("Table");

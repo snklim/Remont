@@ -5,7 +5,8 @@ using Remont.Common.Model;
 
 namespace Remont.Common.Repository
 {
-    public interface IRepository<TItem> where TItem : BaseItem
+    public interface IRepository<TItem> : IDisposable
+        where TItem : BaseItem
     {
 		TItem AddOrUpdate(TItem item);
 

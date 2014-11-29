@@ -16,9 +16,11 @@ namespace Remont.DAL.Repositories
 
             query = query
                 .Include(row => row.Cells)
-				.Include("Cells.DataSourceRow")
+                .Include("Cells.DataSourceRow")
 				.Include("Cells.DataSourceRow.Table")
-                .Include("Cells.DataSourceRow.Cells");
+                .Include("Cells.DataSourceRow.Cells")
+                .Include("Cells.DataSourceRows")
+                .Include("Cells.DataSourceRows.Cells");
 			
             return query;
         }
@@ -51,19 +53,32 @@ namespace Remont.DAL.Repositories
 			    };
 		    }
 
-			MapCellAndColumn(pageInfoRequest, row, columns);
+	        MapCellAndColumn(pageInfoRequest, row, columns);
 
 		    return row;
 	    }
 
-        protected override Row InternalAddOrUpdate(Row item)
+        protected override Row InternalAddOrUpdate(Row row)
         {
-            foreach (var cell in item.Cells)
+            DbContext.Entry(row).State = EntityState.Modified;
+            foreach (var cell in row.Cells)
             {
                 cell.Column = null;
                 cell.DataSourceRow = null;
+                if (cell.DataSourceRows != null)
+                {
+                    //DbContext.Entry(cell).State = EntityState.Modified;
+                    foreach (var dataSourceRow in cell.DataSourceRows.Where(r => r != null))
+                    {
+
+                        //DbContext.Entry(dataSourceRow).State = EntityState.Modified;
+                        //dataSourceRow.DataSourceCells.Add(cell);
+                        //dataSourceRow.Cells = null;
+                        //dataSourceRow.Table = null;
+                    }
+                }
             }
-            return base.InternalAddOrUpdate(item);
+            return base.InternalAddOrUpdate(row);
         }
 
         private void MapCellAndColumn(PageInfoRequest pageInfoRequest, Row row, List<Column> columns)

@@ -26,10 +26,10 @@ namespace Remont.DAL.Repositories
             return query;
         }
 
-        protected override Cell InternalAddOrUpdate(Cell item)
+        protected override Cell InternalAddOrUpdate(Cell row)
         {
-            item.DataSourceRow = null;
-            return base.InternalAddOrUpdate(item);
+            row.DataSourceRow = null;
+            return base.InternalAddOrUpdate(row);
         }
     }
 }

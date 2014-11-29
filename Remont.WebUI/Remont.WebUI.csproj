@@ -115,6 +115,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Pages\Controls\control_entity_picker.html" />
+    <Content Include="Pages\Controls\control_list_entity_picker.html" />
     <Content Include="Pages\Controls\control_select.html" />
     <Content Include="Pages\Controls\control_text.html" />
     <Content Include="Pages\control_modal.html" />
@@ -237,7 +238,11 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\lodash.underscore.js" />
+    <Content Include="Scripts\lodash.underscore.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\underscore-awesomer.js" />
+    <Content Include="Scripts\underscore-awesomer.min.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
